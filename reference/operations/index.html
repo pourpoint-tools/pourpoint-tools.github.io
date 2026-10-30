@@ -1,0 +1,2859 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pourpoint-tools.github.io/reference/operations/">
+      
+      
+        <link rel="prev" href="../../rasters/">
+      
+      
+        <link rel="next" href="../results/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Core operations - Pourpoint and HFX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#core-operations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Pourpoint and HFX" class="md-header__button md-logo" aria-label="Pourpoint and HFX" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pourpoint and HFX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Core operations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Pourpoint and HFX" class="md-nav__button md-logo" aria-label="Pourpoint and HFX" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Pourpoint and HFX
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pourpoint
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pourpoint
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rasters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Native rasters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core operations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.select_upstream_subbasins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        select_upstream_subbasins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.delineate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delineate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.refine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        refine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        merge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.snap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        snap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.select_rivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        select_rivers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QGISBundle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QGISBundle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle.add_vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle.add_raster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_raster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle.add_result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_result
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle.write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        write
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Returned objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced source access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hfx/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HFX
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HFX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hfx/data-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hfx/bundle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bundle discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hfx/vector-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hfx/spatial-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hfx/raster-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Native rasters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.select_upstream_subbasins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        select_upstream_subbasins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.delineate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delineate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.refine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        refine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        merge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.snap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        snap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.select_rivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        select_rivers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QGISBundle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QGISBundle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle.add_vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle.add_raster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_raster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle.add_result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_result
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.QGISBundle.write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        write
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="core-operations">Core operations</h1>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pourpoint.select_upstream_subbasins" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">select_upstream_subbasins</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="n">Targets</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]]</span></code>
+
+</h2>
+          <div class="doc-overloads">
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">select_upstream_subbasins</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span><span class="p">,</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]</span>
+</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">select_upstream_subbasins</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Targets</span><span class="p">,</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BatchResult</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]]</span>
+</code></pre></div>          </div>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Select whole sub-basins approximating land draining to a target.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>fabric</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.HydroFabric (pourpoint.fabric.HydroFabric)" href="../source/#pourpoint.HydroFabric">HydroFabric</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Open HFX fabric supplying catchments and upstream connectivity.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="shapely.geometry.base.BaseGeometry">BaseGeometry</span> | <span title="pourpoint._batch.Targets">Targets</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>EPSG:4326 geometry, or a dictionary of named geometries or list for a
+batch. A multipart geometry is one target. Regions include boundary
+intersections. A point on a shared boundary belongs to the smallest
+supplied catchment ID; river associations do not determine ownership.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Nonnegative catchment level, selected explicitly without fallback.</p>
+              </div>
+            </td>
+            <td>
+                  <code>1</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>n_jobs</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Batch worker limit: 1 is sequential, -1 uses available CPU capacity,
+and positive values bound worker-owned readers. Single calls are serial.</p>
+              </div>
+            </td>
+            <td>
+                  <code>1</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span> or <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
+
+
+  
+      dataclass
+   (pourpoint.results.BatchResult)" href="../results/#pourpoint.BatchResult">BatchResult</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whole intersecting units and their inclusive upstream closure. An empty
+geometry succeeds with an empty list. Batch slots preserve input order;
+dictionary keys are names, while list entries get new UUID names on
+each call. Duplicate geometries remain independent targets.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.OperationError (pourpoint.results.OperationError)" href="../results/#pourpoint.OperationError">OperationError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>selection.invalid_target</code> for invalid geometry,
+<code>selection.no_coverage</code> for a nonempty target without coverage, or
+<code>selection.connectivity_unavailable</code> for unsupplied connectivity.
+Batches retain these failures as issues with None result slots.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Invalid level or worker count, or a flow relationship crossing levels.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Invalid target type or batch names.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>This is whole-unit selection, not exact-point raster delineation. Returned
+vectors survive fabric closure. Integrity, configuration and unexpected
+failures propagate even in batches; they are not empty selections.</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pourpoint.delineate" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">delineate</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="n">Targets</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">snap_onto</span><span class="p">:</span> <span class="n">SnapGeometry</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">refine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DelineationResult</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">DelineationResult</span><span class="p">]</span></code>
+
+</h2>
+          <div class="doc-overloads">
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">delineate</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span><span class="p">,</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">snap_onto</span><span class="p">:</span> <span class="n">SnapGeometry</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span>
+    <span class="n">refine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DelineationResult</span>
+</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">delineate</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Targets</span><span class="p">,</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">snap_onto</span><span class="p">:</span> <span class="n">SnapGeometry</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span>
+    <span class="n">refine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">DelineationResult</span><span class="p">]</span>
+</code></pre></div>          </div>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Compose snapping, upstream selection, optional refinement and merging.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>fabric</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.HydroFabric (pourpoint.fabric.HydroFabric)" href="../source/#pourpoint.HydroFabric">HydroFabric</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Open fabric used for all source access.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="shapely.geometry.base.BaseGeometry">BaseGeometry</span> | <span title="pourpoint._batch.Targets">Targets</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>EPSG:4326 geometry, named dictionary or list of geometries. Batch
+naming and whole-unit selection follow <code>select_upstream_subbasins</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Explicit catchment level; no fallback or automatic finest-level choice.</p>
+              </div>
+            </td>
+            <td>
+                  <code>1</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>snap_onto</code>
+            </td>
+            <td>
+                  <code><span title="pourpoint.rivers.SnapGeometry">SnapGeometry</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional supplied stream geometry accepted by <code>snap</code>. Snapping occurs
+before selection and requires a point; it is never inferred.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>radius</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum snap distance in WGS84 ground metres, finite and nonnegative.
+Validated even when snapping is disabled.</p>
+              </div>
+            </td>
+            <td>
+                  <code>100.0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refine</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Request raster refinement of the adjusted point under the equivalence
+assumption described by <code>pourpoint.refinement.refine</code>. Failure does
+not fall back to a coarse result.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>merge</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Populate the merged geometry as well as retaining individual sub-basins.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>window_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Positive odd native-cell outlet search width. Validated even without
+refinement. This is a practical choice, not a universal scientific optimum.</p>
+              </div>
+            </td>
+            <td>
+                  <code>3</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>n_jobs</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Batch worker limit: 1 is sequential, -1 uses available CPU capacity,
+and positive values bound worker-owned readers.</p>
+              </div>
+            </td>
+            <td>
+                  <code>1</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.DelineationResult
+
+
+  
+      dataclass
+   (pourpoint.results.DelineationResult)" href="../results/#pourpoint.DelineationResult">DelineationResult</a> or <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
+
+
+  
+      dataclass
+   (pourpoint.results.BatchResult)" href="../results/#pourpoint.BatchResult">BatchResult</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whole units or refined contributions, optional merged geometry, original
+and adjusted targets, source declarations, and any selected outlet and
+raster subsets. Batch identity and order are retained.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.OperationError (pourpoint.results.OperationError)" href="../results/#pourpoint.OperationError">OperationError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Single-target failures use the codes of <code>snap</code>,
+<code>select_upstream_subbasins</code> and <code>pourpoint.refinement.refine</code>.
+Batches record them as issues and None slots, not coarse successes.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Invalid level, worker count, radius or window size, or invalid supplied
+stream geometry. Shared configuration and integrity failures propagate
+rather than becoming batch issues.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Invalid target types or nonboolean refinement/merge controls.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>No separate delineation algorithm is used. Vector outputs are materialized
+and remain usable after fabric closure. Vector snapping and raster outlet
+adjustment are distinct: the latter is retained in <code>outlet_cell</code>.</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pourpoint.refine" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Point</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">subbasins</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">footprint</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GranularRefinement</span> <span class="o">|</span> <span class="n">FootprintRefinement</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">GranularRefinement</span><span class="p">]</span></code>
+
+</h2>
+          <div class="doc-overloads">
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">refine</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
+    <span class="n">subbasins</span><span class="p">:</span> <span class="n">BatchResult</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]],</span>
+    <span class="n">target</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">footprint</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">GranularRefinement</span><span class="p">]</span>
+</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">refine</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span>
+    <span class="n">subbasins</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">],</span>
+    <span class="n">footprint</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GranularRefinement</span>
+</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">refine</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span>
+    <span class="n">footprint</span><span class="p">:</span> <span class="n">BaseGeometry</span><span class="p">,</span>
+    <span class="n">subbasins</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FootprintRefinement</span>
+</code></pre></div>          </div>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Trace incoming native D8 flow inside a complete vector mask.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>fabric</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.HydroFabric (pourpoint.fabric.HydroFabric)" href="../source/#pourpoint.HydroFabric">HydroFabric</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Open fabric supplying the native direction/accumulation pair.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="shapely.geometry.Point">Point</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Nonempty point in EPSG:4326 covered by the mask. Omit for a selection
+batch, which carries its own target geometries.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>subbasins</code>
+            </td>
+            <td>
+                  <code><span title="collections.abc.Sequence">Sequence</span>[<a class="autorefs autorefs-internal" title="pourpoint.Subbasin
+
+
+  
+      dataclass
+   (pourpoint.features.Subbasin)" href="../results/#pourpoint.Subbasin">Subbasin</a>] | <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
+
+
+  
+      dataclass
+   (pourpoint.results.BatchResult)" href="../results/#pourpoint.BatchResult">BatchResult</a>[<span title="list">list</span>[<a class="autorefs autorefs-internal" title="pourpoint.Subbasin
+
+
+  
+      dataclass
+   (pourpoint.features.Subbasin)" href="../results/#pourpoint.Subbasin">Subbasin</a>]] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whole source units forming one mask, or a selection <code>BatchResult</code>.
+Mutually exclusive with <code>footprint</code>. Batch identity, order and prior
+issues are preserved; failed slots are not retried.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>footprint</code>
+            </td>
+            <td>
+                  <code><span title="shapely.geometry.base.BaseGeometry">BaseGeometry</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Nonempty Polygon or MultiPolygon in EPSG:4326, used as one mask.
+Supply exactly one mask form. Batch footprints come from <code>subbasins</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>window_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Positive odd search width in native cells around the cell containing
+the target. Size 1 permits no move beyond that cell. Selects the highest
+valid accumulation inside the mask, breaking ties by source row then
+column. Both bands must be valid for outlet selection.</p>
+              </div>
+            </td>
+            <td>
+                  <code>3</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>n_jobs</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Batch worker limit: 1 is sequential, -1 uses available CPU capacity,
+and positive values bound worker-owned readers.</p>
+              </div>
+            </td>
+            <td>
+                  <code>1</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.GranularRefinement
+
+
+  
+      dataclass
+   (pourpoint.refinement.GranularRefinement)" href="../results/#pourpoint.GranularRefinement">GranularRefinement</a> or <a class="autorefs autorefs-internal" title="pourpoint.FootprintRefinement
+
+
+  
+      dataclass
+   (pourpoint.refinement.FootprintRefinement)" href="../results/#pourpoint.FootprintRefinement">FootprintRefinement</a> or <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
+
+
+  
+      dataclass
+   (pourpoint.results.BatchResult)" href="../results/#pourpoint.BatchResult">BatchResult</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Contributions for sub-basin input or one footprint for geometry input,
+plus the selected native outlet cell and materialized raster subsets.
+Empty source pieces are omitted. Both forms trace the same combined
+mask; merging granular contributions yields the footprint result.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.OperationError (pourpoint.results.OperationError)" href="../results/#pourpoint.OperationError">OperationError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>refinement.point_required</code> for a nonpoint or empty point geometry,
+<code>refinement.empty_mask</code> for an empty or nonpolygon mask,
+<code>refinement.outside_mask</code> when the point is not covered,
+<code>refinement.missing_rasters</code> for an absent raster pair,
+<code>refinement.no_coverage</code> for inadequate raster coverage, or
+<code>refinement.no_outlet</code> when the local search has no valid masked cell.
+Batches retain these failures as issues with None slots.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Invalid window/worker count or mutually incompatible mask arguments.
+Integrity and unexpected errors also propagate, including in batches.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A single call omits <code>target</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>Assumes the whole vector mask equals the raster watershed at the terminal
+unit outlet, and that the requested point drains to that outlet. Execution
+does not verify this scientific equivalence. The default local search is a
+practical choice, not a universal optimum; larger windows can switch branches.</p>
+<p>Mask cells use GDAL center-based rasterization. Reverse D8 tracing spans
+the entire mask and needs only valid direction, not valid accumulation;
+zero and signed negative directions are terminal. Paths cannot leave the
+mask. Native direction pointers are never warped. Selected cell polygons
+are transformed to EPSG:4326 and clipped to the vector mask, then partitioned
+at source boundaries for granular output. No hole filling is applied.
+Materialized vectors survive fabric closure; perform source-dependent
+operations and export within the fabric context.</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pourpoint.merge" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">subbasins</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BasinPart</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">BasinPart</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Polygon</span> <span class="o">|</span> <span class="n">MultiPolygon</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">Polygon</span> <span class="o">|</span> <span class="n">MultiPolygon</span><span class="p">]</span></code>
+
+</h2>
+          <div class="doc-overloads">
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">merge</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">subbasins</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BasinPart</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Polygon</span> <span class="o">|</span> <span class="n">MultiPolygon</span>
+</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">merge</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">subbasins</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">BasinPart</span><span class="p">]]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Polygon</span> <span class="o">|</span> <span class="n">MultiPolygon</span><span class="p">]</span>
+</code></pre></div>          </div>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Merge sub-basin geometries without creating a new source feature.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>subbasins</code>
+            </td>
+            <td>
+                  <code><span title="collections.abc.Sequence">Sequence</span>[<span title="pourpoint.refinement.BasinPart">BasinPart</span>] | <span title="collections.abc.Sequence">Sequence</span>[<span title="collections.abc.Sequence">Sequence</span>[<span title="pourpoint.refinement.BasinPart">BasinPart</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whole units or contributions forming one footprint, or nested groups
+representing independent footprints. Geometries use EPSG:4326.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="shapely.geometry.Polygon">Polygon</span> or <span title="shapely.geometry.MultiPolygon">MultiPolygon</span> or <span title="list">list</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Polygonal union for one group; an ordered list of unions for nested
+groups. An empty outer input returns an empty Polygon, not a list.
+Empty inner groups produce empty Polygons. No source attributes are
+aggregated, and no source access or geometry repair is performed.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pourpoint.snap" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">snap</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span><span class="p">,</span> <span class="n">onto</span><span class="p">:</span> <span class="n">SnapGeometry</span><span class="p">,</span> <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Point</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Find the nearest point on supplied streams within a search radius.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="shapely.geometry.base.BaseGeometry">BaseGeometry</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Nonempty finite Point in EPSG:4326 (longitude, latitude).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>onto</code>
+            </td>
+            <td>
+                  <code><span title="pourpoint.rivers.SnapGeometry">SnapGeometry</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>LineString, MultiLineString, River, RiverNetwork or sequence of rivers.
+Stream vertices must be finite and in EPSG:4326.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>radius</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum WGS84 ground distance in metres, finite and nonnegative.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="shapely.geometry.Point">Point</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Snapped location in EPSG:4326. Equal-distance matches retain input order.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.OperationError (pourpoint.results.OperationError)" href="../results/#pourpoint.OperationError">OperationError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>snap.point_required</code> for an invalid WGS84 point;
+<code>snap.no_match</code> when no supplied stream is in range.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Invalid radius or stream geometry. Split segments spanning 180 degrees
+or more of longitude before calling.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>Intended for local stream segments, not arbitrary globe-spanning lines.
+Segments interpolate straight in longitude/latitude, not along great-circle
+arcs; distances are measured on the WGS84 ellipsoid. This optional operation
+neither infers a network nor selects a raster outlet cell.</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pourpoint.select_rivers" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">select_rivers</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="n">Subbasin</span> <span class="o">|</span> <span class="n">SubbasinContribution</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Subbasin</span> <span class="o">|</span> <span class="n">SubbasinContribution</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">include_downstream</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RiverNetwork</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Select river portions inside one combined footprint.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>fabric</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.HydroFabric (pourpoint.fabric.HydroFabric)" href="../source/#pourpoint.HydroFabric">HydroFabric</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Open fabric supplying rivers and their relationships.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="shapely.geometry.base.BaseGeometry">BaseGeometry</span> | <a class="autorefs autorefs-internal" title="pourpoint.Subbasin
+
+
+  
+      dataclass
+   (pourpoint.features.Subbasin)" href="../results/#pourpoint.Subbasin">Subbasin</a> | <a class="autorefs autorefs-internal" title="pourpoint.SubbasinContribution
+
+
+  
+      dataclass
+   (pourpoint.refinement.SubbasinContribution)" href="../results/#pourpoint.SubbasinContribution">SubbasinContribution</a> | <span title="collections.abc.Sequence">Sequence</span>[<a class="autorefs autorefs-internal" title="pourpoint.Subbasin
+
+
+  
+      dataclass
+   (pourpoint.features.Subbasin)" href="../results/#pourpoint.Subbasin">Subbasin</a> | <a class="autorefs autorefs-internal" title="pourpoint.SubbasinContribution
+
+
+  
+      dataclass
+   (pourpoint.refinement.SubbasinContribution)" href="../results/#pourpoint.SubbasinContribution">SubbasinContribution</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>EPSG:4326 polygonal geometry, sub-basin/contribution, or collection of
+parts forming one footprint. Internal part boundaries do not limit flow;
+this collection is not a batch of independent targets.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Nonnegative river level, independent of catchment levels. No fallback
+or inferred correspondence between catchment and river tiers is used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>1</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>include_downstream</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extend along every supplied outgoing continuation, including splits and
+reconvergence. Features are deduplicated by source ID. Partial boundary
+features require unambiguous orientation to retain downstream linework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.RiverNetwork
+
+
+  
+      dataclass
+   (pourpoint.features.RiverNetwork)" href="../results/#pourpoint.RiverNetwork">RiverNetwork</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Selected portions with original identities, attributes, directed
+relationships and supplied nodes. Source quantities are not recomputed.
+Empty footprints or no intersecting rivers give an empty network when
+the river family and its relationship data are supplied. Materialized
+results survive closure.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.OperationError (pourpoint.results.OperationError)" href="../results/#pourpoint.OperationError">OperationError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>rivers.unavailable</code> when the river family is absent;
+<code>rivers.connectivity_unavailable</code> when extension needs a missing
+<code>downstream_ids</code> column in supplied relationship data;
+<code>rivers.ambiguous_direction</code> when a partial
+feature cannot be oriented from supplied orientation or endpoint nodes.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="KeyError">KeyError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>River relationship data are not declared, even for an empty footprint
+or no matching rivers. Missing referenced source IDs also raise.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Invalid level, nonpolygonal nonempty footprint, or downstream flow
+crossing river levels. Integrity errors propagate rather than producing
+a partial network.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>Clipping creates endpoints, not natural outlets. Retained relationship
+references outside the selection must not be interpreted as missing flow
+or source-described termination. No mainstem is inferred from node incidence.</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="pourpoint.QGISBundle" class="doc doc-heading">
+            <code>pourpoint.QGISBundle</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Build a portable QGIS folder incrementally without hydrological computation.</p>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>Add methods retain data and return this builder for chaining. <code>write</code> creates
+a new folder with a relative-reference project, GeoPackage and native-grid
+GeoTIFFs; it never replaces an existing path. No merging, delineation or river
+tracing is performed implicitly. Perform source-dependent export inside the
+fabric context; current raster subsets already contain materialized arrays.</p>
+<p>Scalar source fields become ordinary vector columns. Reserved-name collisions
+gain <code>source_</code> prefixes; <code>source_metadata.attribute_columns</code> records names.
+Rich values, original WKB and Arrow schemas/metadata are losslessly retained
+as IPC streams in <code>source_arrow</code>. Result locations are WGS84 WKB in
+<code>result_metadata</code>, alongside provenance; these are not extra map layers.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pourpoint.QGISBundle.add_vector" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">add_vector</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="n">VectorFeature</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">VectorFeature</span><span class="p">]</span> <span class="o">|</span> <span class="n">RiverNetwork</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">crs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">CRS</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Add one vector layer, retaining supplied source records.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Display layer name. Storage table names are generated separately.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>data</code>
+            </td>
+            <td>
+                  <code><span title="shapely.geometry.base.BaseGeometry">BaseGeometry</span> | <span title="pourpoint.qgis.VectorFeature">VectorFeature</span> | <span title="collections.abc.Sequence">Sequence</span>[<span title="pourpoint.qgis.VectorFeature">VectorFeature</span>] | <a class="autorefs autorefs-internal" title="pourpoint.RiverNetwork
+
+
+  
+      dataclass
+   (pourpoint.features.RiverNetwork)" href="../results/#pourpoint.RiverNetwork">RiverNetwork</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Raw geometry, feature, collection of features, or river network.
+Networks also retain relationships, source nodes and declarations
+in companion tables; individual feature identities are preserved.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>crs</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="rasterio.crs.CRS">CRS</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Required for raw geometry. Feature inputs default to EPSG:4326.
+This assigns the CRS; it does not transform coordinates. Native
+outlet-cell geometry must use its grid CRS explicitly.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Raw geometry has no explicit CRS.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pourpoint.QGISBundle.add_raster" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">add_raster</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">RasterSubset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Add a retained raster subset without reading or warping source data.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Display layer name; a safe storage filename is generated on write.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>data</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.RasterSubset
+
+
+  
+      dataclass
+   (pourpoint.refinement.RasterSubset)" href="../results/#pourpoint.RasterSubset">RasterSubset</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Native-grid band and whole-vector mask. Write preserves valid source
+values inside the mask and uses source nodata elsewhere, including
+unrelated corners of the rectangular window.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pourpoint.QGISBundle.add_result" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">add_result</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="n">ExportResult</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">ExportResult</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Self</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Add available delineation or refinement outputs without computing more.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>result</code>
+            </td>
+            <td>
+                  <code><span title="pourpoint.qgis.ExportResult">ExportResult</span> | <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
+
+
+  
+      dataclass
+   (pourpoint.results.BatchResult)" href="../results/#pourpoint.BatchResult">BatchResult</a>[<span title="pourpoint.qgis.ExportResult">ExportResult</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A single result or its batch container. Each batch target gets its
+named group and retained identity; failures go into <code>target_issues</code>
+without fabricated features. Available outputs include sub-basins,
+merged footprint, outlined native-CRS outlet cell and one raster
+pair per refined target. Overlapping targets may duplicate pixels.
+Granular refinement is not silently merged into another layer.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>Original and vector-adjusted targets and provenance are retained in
+<code>result_metadata</code> when available, not added as extra map layers.</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pourpoint.QGISBundle.write" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">write</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Write the accumulated layers to a new portable folder.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>New output directory. Missing parents are created.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Output folder containing <code>watershed.qgz</code>, <code>vectors.gpkg</code> and
+any <code>raster_*.tif</code> files. Project references are relative so the
+entire folder can be moved together.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="FileExistsError">FileExistsError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The destination already exists; it is never overwritten.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A raster subset lacks retained source values or source nodata.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>Serializes retained arrays and vector records, with no hidden hydrological
+operations. Cost scales with exported features and pixels, including
+duplicated pixels across targets. Writes are not transactional across
+the folder: a failure may leave partial files for the caller to remove.</p>
+</details>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

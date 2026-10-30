@@ -1,0 +1,1437 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pourpoint-tools.github.io/concepts/">
+      
+      
+        <link rel="prev" href="../getting-started/">
+      
+      
+        <link rel="next" href="../operations/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Concepts - Pourpoint and HFX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#watersheds-and-upstream-contributing-area" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Pourpoint and HFX" class="md-header__button md-logo" aria-label="Pourpoint and HFX" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pourpoint and HFX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Concepts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Pourpoint and HFX" class="md-nav__button md-logo" aria-label="Pourpoint and HFX" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Pourpoint and HFX
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href=".." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pourpoint
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pourpoint
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hydrofabrics-the-datasets-pourpoint-operates-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydrofabrics: the datasets Pourpoint operates on
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delineating-a-watershed-from-a-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delineating a watershed from a point
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Delineating a watershed from a point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snap-the-point-to-a-river" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Snap the point to a river
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identify-the-terminal-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identify the terminal unit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect-upstream-sub-basins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collect upstream sub-basins
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refining-a-point-watershed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refining a point watershed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Refining a point watershed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choose-the-outlet-cell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose the outlet cell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace-upstream-cells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trace upstream cells
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#construct-the-refined-footprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Construct the refined footprint
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generalizing-from-a-point-to-a-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalizing from a point to a region
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Generalizing from a point to a region">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector-delineation-of-a-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector delineation of a region
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rasters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Native rasters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Returned objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced source access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../hfx/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HFX
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HFX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hfx/data-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hfx/bundle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bundle discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hfx/vector-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hfx/spatial-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hfx/raster-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Native rasters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hydrofabrics-the-datasets-pourpoint-operates-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydrofabrics: the datasets Pourpoint operates on
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delineating-a-watershed-from-a-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delineating a watershed from a point
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Delineating a watershed from a point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snap-the-point-to-a-river" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Snap the point to a river
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identify-the-terminal-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identify the terminal unit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect-upstream-sub-basins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collect upstream sub-basins
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refining-a-point-watershed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refining a point watershed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Refining a point watershed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choose-the-outlet-cell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose the outlet cell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace-upstream-cells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trace upstream cells
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#construct-the-refined-footprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Construct the refined footprint
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generalizing-from-a-point-to-a-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalizing from a point to a region
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Generalizing from a point to a region">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector-delineation-of-a-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector delineation of a region
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="watersheds-and-upstream-contributing-area">Watersheds and upstream contributing area</h1>
+<h2 id="hydrofabrics-the-datasets-pourpoint-operates-on">Hydrofabrics: the datasets Pourpoint operates on</h2>
+<p>A <strong>hydrofabric</strong> describes how a landscape drains. The USGS defines it as
+“a dataset containing a network of connected representations of rivers, lakes,
+and catchments” (<a href="https://waterdata.usgs.gov/blog/hydrofabric/">USGS, <em>Progress Toward a Reference Hydrologic Geospatial Fabric</em></a>).</p>
+<p>In Pourpoint, we understand a hydrofabric as a dataset <strong>tiling the landscape
+into sub-basins</strong>, describing their downstream connections, and providing the
+river network alongside auxiliary data, when available, such as the
+flow-direction and flow-accumulation rasters used to produce it.</p>
+<p>Pourpoint operates on these existing datasets; it does not construct the
+hydrofabric from elevation data. It reads them through
+<a href="../hfx/">HydroFabric Exchange (HFX)</a>, the format that packages their
+geometries, connectivity, attributes and available rasters.
+Examples of such datasets include <a href="https://doi.org/10.1029/2024WR038308">GRIT</a>,
+<a href="https://www.reachhydro.org/home/params/merit-basins">MERIT-Basins</a>, derived from
+<a href="https://doi.org/10.1029/2019WR024873">MERIT Hydro</a>, and
+<a href="https://doi.org/10.22541/essoar.171629686.65893579/v1">TDX-Hydro</a>.</p>
+<h2 id="delineating-a-watershed-from-a-point">Delineating a watershed from a point</h2>
+<p>In Pourpoint, we understand a <strong>watershed</strong> as the area of land that drains to a
+specified outlet point.</p>
+<h3 id="snap-the-point-to-a-river">Snap the point to a river</h3>
+<p>A hydrofabric represents rivers with vector lines. Those lines simplify the
+river's course and may not coincide exactly with a surveyed location or a point
+chosen on a map. A point intended to represent a river outlet can therefore
+fall beside the dataset's river line.</p>
+<p>We recommend snapping the requested point to the hydrofabric's river network,
+especially when raster refinement will follow. Snapping places the point on
+the nearest supplied river segment within a search radius. It helps align the
+request with the dataset's representation of drainage; refinement will then
+search nearby for an outlet cell. See <a href="../reference/operations/#pourpoint.snap"><code>snap</code></a>
+for the operation and its parameters.</p>
+<p>Snapping is optional: Pourpoint can also delineate from the original point.
+We use <span class="arithmatex">\(p\)</span> for the point after snapping, or for the unchanged point when snapping
+is not requested. In the first panel below, <span class="arithmatex">\(p\)</span> lies on the river network.</p>
+<p><img alt="Three panels show a point on a river, its terminal sub-basin highlighted, and then all upstream sub-basins highlighted." src="../images/point-selection.svg" /></p>
+<p><em>Locate the point, identify its terminal sub-basin, then select the sub-basins
+upstream of it. Conceptual schematic.</em></p>
+<h3 id="identify-the-terminal-unit">Identify the terminal unit</h3>
+<p>Pourpoint locates the sub-basin containing <span class="arithmatex">\(p\)</span>. This is the starting place for
+our upstream search, and we call it the <strong>terminal unit</strong>, denoted by <span class="arithmatex">\(t\)</span>.
+The second panel highlights it in blue. If <span class="arithmatex">\(p\)</span> lies exactly on a shared boundary,
+we need a way to choose between the touching sub-basins: Pourpoint arbitrarily
+assigns it to the one whose numerical ID is smallest.</p>
+<p>We use <span class="arithmatex">\(b\)</span> for a sub-basin and <span class="arithmatex">\(P_b\)</span> for its polygon. In particular, <span class="arithmatex">\(t\)</span> is the
+sub-basin associated with our point <span class="arithmatex">\(p\)</span>, and <span class="arithmatex">\(P_t\)</span> is its polygon.</p>
+<h3 id="collect-upstream-sub-basins">Collect upstream sub-basins</h3>
+<p>Starting at <span class="arithmatex">\(t\)</span>, follow the hydrofabric's connections upstream. First find the
+sub-basins draining directly into <span class="arithmatex">\(t\)</span>, then those draining into them, and
+continue until no new sub-basins remain. The third panel shows the selected
+units, including <span class="arithmatex">\(t\)</span> itself.</p>
+<p>Mathematically, we write <span class="arithmatex">\(b \to t\)</span> when sub-basin <span class="arithmatex">\(b\)</span> drains directly into <span class="arithmatex">\(t\)</span>,
+and <span class="arithmatex">\(b \to^* t\)</span> when it reaches <span class="arithmatex">\(t\)</span> through any number of downstream connections.
+We allow zero connections, so <span class="arithmatex">\(t \to^* t\)</span>. The selected set is</p>
+<div class="arithmatex">\[
+\mathcal B_t = \{b \mid b \to^* t\}.
+\]</div>
+<p>Here <span class="arithmatex">\(b\)</span> denotes a sub-basin, and the arrow describes the hydrofabric's
+connectivity between sub-basins. Thus <span class="arithmatex">\(\mathcal B_t\)</span> contains <span class="arithmatex">\(t\)</span> and every
+sub-basin that drains into it, directly or indirectly.</p>
+<p>Combining their polygons gives the <strong>vector footprint</strong>:</p>
+<div class="arithmatex">\[
+M = \bigcup_{b \in \mathcal B_t} P_b.
+\]</div>
+<p>The union symbol means combine the polygons of all selected sub-basins,
+counting overlapping land once. This is the result of
+<a href="../reference/operations/#pourpoint.select_upstream_subbasins"><code>select_upstream_subbasins</code></a>,
+which also forms the vector-selection stage of
+<a href="../reference/operations/#pourpoint.delineate"><code>delineate</code></a>.</p>
+<h2 id="refining-a-point-watershed">Refining a point watershed</h2>
+<p>No matter where <span class="arithmatex">\(p\)</span> lies within its terminal unit, vector delineation selects
+the same sub-basins and produces the same footprint. The figure below illustrates
+why this can include land that does not drain to the requested point.</p>
+<p><img alt="Left: three selected sub-basins with point p above a confluence and outlet q below it. Right: the refined contributing area near p." src="../images/point-refinement.svg" /></p>
+<p><em>Left: vector footprint. Right: raster-refined footprint. Conceptual schematic.
+The terminal polygon is labelled <span class="arithmatex">\(P_s\)</span> in this figure; it corresponds to <span class="arithmatex">\(P_t\)</span>
+in the text.</em></p>
+<p>In the left panel, both upstream units <span class="arithmatex">\(u_1\)</span> and <span class="arithmatex">\(u_2\)</span> drain into the terminal
+unit. However, <span class="arithmatex">\(p\)</span> lies on the left branch, above the junction. Water from <span class="arithmatex">\(u_2\)</span>
+joins that branch <strong>downstream of <span class="arithmatex">\(p\)</span></strong>, so it does not drain to <span class="arithmatex">\(p\)</span>. Selecting
+whole sub-basins includes <span class="arithmatex">\(u_2\)</span> because it drains to the terminal unit, not
+because it drains to the particular point we chose inside it.</p>
+<p>Even a point on the main stem can lie upstream of the sub-basin's declared
+outlet, labelled <span class="arithmatex">\(q\)</span>. Land draining into the river between that point and <span class="arithmatex">\(q\)</span>
+also belongs to the vector footprint but not to the point's watershed.</p>
+<p>This is where sub-basin size matters. We can informally think of it as the
+hydrofabric's <strong>vector resolution</strong>: whole polygons are the smallest pieces
+we can select. Smaller sub-basins allow finer distinctions between outlets;
+there is no single fixed size when the polygons have different areas.
+Some datasets also offer several levels of subdivision. The USGS
+<a href="https://www.usgs.gov/national-hydrography/watershed-boundary-dataset">Watershed Boundary Dataset</a>,
+for example, organizes hydrologic units into a nested hierarchy identified by
+Hydrologic Unit Codes (HUCs).</p>
+<p>When the hydrofabric provides flow-direction and flow-accumulation rasters,
+<a href="../reference/operations/#pourpoint.refine"><code>refine</code></a> can resolve contributing
+land cell by cell instead. Pourpoint reads the rasters over the whole vector
+footprint <span class="arithmatex">\(M\)</span> and masks out cells outside it. The light-gray grid in the right
+panel represents this working area. A cell belongs to the mask when its centre
+falls within <span class="arithmatex">\(M\)</span>; we denote this set of cells by <span class="arithmatex">\(\mathcal G_M\)</span>.</p>
+<h3 id="choose-the-outlet-cell">Choose the outlet cell</h3>
+<p>The <strong>flow-accumulation raster</strong> records the upstream contribution to each cell,
+in the dataset's declared units, such as a cell count or drainage area.
+Pourpoint examines a small window around <span class="arithmatex">\(p\)</span>. Among cells inside the mask with
+valid accumulation and direction values, it selects the one with the greatest
+accumulation. We call this the <strong>outlet cell</strong>, <span class="arithmatex">\(c_o\)</span>.</p>
+<p>The default search window is <span class="arithmatex">\(3 \times 3\)</span> cells. This is an engineering choice
+for a local adjustment, with the expectation that users will usually snap their
+point to the river network first. It is configurable, not a universal optimum:
+a larger window can select a different branch near a junction. See
+<a href="../operations/#selection-and-refinement-conventions">refinement conventions</a>.</p>
+<h3 id="trace-upstream-cells">Trace upstream cells</h3>
+<p>The <strong>flow-direction raster</strong> records which neighbouring cell receives each
+cell's flow. Pourpoint currently supports the D8 model, in which that neighbour
+is one of the eight surrounding cells. Datasets can encode those eight directions
+with different numbers; Pourpoint supports ESRI, TauDEM and unsigned or signed
+GRASS encodings. See <a href="../rasters/#results-and-semantics">raster encodings</a>.</p>
+<p>Let <span class="arithmatex">\(d(c)\)</span> denote the downstream cell receiving flow from cell <span class="arithmatex">\(c\)</span>, when its
+direction defines one. For example, <span class="arithmatex">\(d(a)=b\)</span> means that cell <span class="arithmatex">\(a\)</span> drains directly
+into cell <span class="arithmatex">\(b\)</span>. To find cells upstream of <span class="arithmatex">\(b\)</span>, we look for neighbours whose
+downstream destination is <span class="arithmatex">\(b\)</span>.</p>
+<p>Starting with the outlet, we build successive upstream sets:</p>
+<div class="arithmatex">\[
+C_0 = \{c_o\},
+\qquad
+C_{k+1} = \{c \in \mathcal G_M \mid d(c) \in C_k\}.
+\]</div>
+<p>The next set contains cells inside the mask that drain directly into a cell in
+the current set. Thus <span class="arithmatex">\(C_1\)</span> contains cells one flow step upstream of the outlet,
+<span class="arithmatex">\(C_2\)</span> contains cells two steps upstream, and so on. Cells with no defined
+downstream neighbour do not satisfy this condition.</p>
+<p>Combining these sets gives all contributing cells, including the outlet:</p>
+<div class="arithmatex">\[
+\mathcal C = \bigcup_{k=0}^{\infty} C_k.
+\]</div>
+<p>The infinity symbol expresses “all upstream steps.” In execution, Pourpoint
+does not revisit cells it has already found and stops when no new cells remain.
+Accumulation is used to select the outlet; direction determines the upstream
+connections. An upstream cell can therefore contribute even if its accumulation
+value is missing.</p>
+<h3 id="construct-the-refined-footprint">Construct the refined footprint</h3>
+<p>Let <span class="arithmatex">\(\operatorname{footprint}(c)\)</span> be the polygon occupied by raster cell <span class="arithmatex">\(c\)</span>.
+We combine these cell footprints and clip them to the vector footprint:</p>
+<div class="arithmatex">\[
+W_{\mathrm{refined}}(p) = M \cap \bigcup_{c \in \mathcal C} \operatorname{footprint}(c).
+\]</div>
+<p>The intersection with <span class="arithmatex">\(M\)</span> clips boundary cells to the original vector footprint.
+In the right panel, the pale-purple refined area includes land draining through <span class="arithmatex">\(u_1\)</span> and
+part of the terminal unit, but excludes the right-hand branch through <span class="arithmatex">\(u_2\)</span>.</p>
+<details class="note">
+<summary>Refinement assumes vector–raster consistency</summary>
+<p>In the two-panel figure, <span class="arithmatex">\(q\)</span> is the terminal unit's <strong>declared outlet</strong>:
+the place where drainage leaves that sub-basin. It is different from our
+requested outlet <span class="arithmatex">\(p\)</span>, which can lie farther upstream within the unit.</p>
+<p>Let <span class="arithmatex">\(W_R(q)\)</span> be the watershed obtained from the flow-direction raster at
+the cell corresponding to <span class="arithmatex">\(q\)</span>. Masking refinement to <span class="arithmatex">\(M\)</span> assumes</p>
+<div class="arithmatex">\[
+M \equiv W_R(q).
+\]</div>
+<p>We mean equivalent drainage coverage at raster resolution, not identical
+pixel and vector boundaries. Refining at the declared outlet <span class="arithmatex">\(q\)</span> should
+recover the drainage area represented by the vector footprint.</p>
+<p>If the selected outlet's raster drainage reaches <span class="arithmatex">\(q\)</span>, its contributing
+area is contained in that larger watershed:</p>
+<div class="arithmatex">\[
+W_R(p) \subseteq W_R(q) \equiv M.
+\]</div>
+<p>This is the assumption that makes restricting the trace to <span class="arithmatex">\(M\)</span> safe.
+It has not yet been tested on the available datasets with rasters.
+Successful refinement does not verify it: a masked trace cannot discover
+contributing land outside the mask. How to check or declare consistency
+remains open; <a href="https://github.com/pourpoint-tools/pourpoint/issues/180">issue #180</a>
+records the deferred checking utility.</p>
+</details>
+<h2 id="generalizing-from-a-point-to-a-region">Generalizing from a point to a region</h2>
+<p>Instead of asking which land drains to one point, we can ask which land drains
+to <strong>any point in a target geometry</strong>: a lake, a river reach, or a region.
+We call this its <strong>upstream contributing area</strong>. Think of it as the hydrological
+extent of the target—the land that contributes drainage to it.</p>
+<p>Let <span class="arithmatex">\(R\)</span> be the target geometry, and let <span class="arithmatex">\(W(p)\)</span> denote the watershed of a point
+<span class="arithmatex">\(p\)</span>. Then</p>
+<div class="arithmatex">\[
+U(R) = \bigcup_{p \in R} W(p).
+\]</div>
+<p>Here <span class="arithmatex">\(p\)</span> ranges over every spatial point belonging to <span class="arithmatex">\(R\)</span>, including its interior
+and boundary. Imagine placing an outlet at each of those points and combining
+their watersheds. That combined area is <span class="arithmatex">\(U(R)\)</span>. Land within the target is included:
+it already reaches the target without travelling downstream.</p>
+<p>A point watershed is the single-point case:</p>
+<div class="arithmatex">\[
+U(\{p\}) = W(p).
+\]</div>
+<h3 id="vector-delineation-of-a-region">Vector delineation of a region</h3>
+<p>For a regional target, we select every sub-basin whose polygon shares any part
+of <span class="arithmatex">\(R\)</span>. This includes polygons <strong>wholly inside the region</strong>, polygons crossing
+its boundary, and polygons touching its boundary. We call this set of terminal
+units <span class="arithmatex">\(T_R\)</span>:</p>
+<div class="arithmatex">\[
+T_R = \{b \mid P_b \cap R \neq \varnothing\}.
+\]</div>
+<p>The condition means that the polygon and the region have a nonempty intersection;
+it does not require their boundaries to cross.</p>
+<p>For each terminal unit <span class="arithmatex">\(t\)</span>, we collect <span class="arithmatex">\(\mathcal B_t\)</span>, including <span class="arithmatex">\(t\)</span> itself.
+We then combine the selected sets and their polygons:</p>
+<div class="arithmatex">\[
+\mathcal B_R = \bigcup_{t \in T_R} \mathcal B_t,
+\qquad
+M_R = \bigcup_{b \in \mathcal B_R} P_b.
+\]</div>
+<p>Every unit in <span class="arithmatex">\(T_R\)</span> therefore remains in the result, alongside its upstream
+contributors. <span class="arithmatex">\(U(R)\)</span> is the conceptual contributing area, while <span class="arithmatex">\(M_R\)</span> is its
+representation using whole sub-basin polygons. Pourpoint currently uses this
+vector representation for regions; raster refinement is available for point
+outlets.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

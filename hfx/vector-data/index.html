@@ -1,0 +1,1312 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pourpoint-tools.github.io/hfx/vector-data/">
+      
+      
+        <link rel="prev" href="../bundle/">
+      
+      
+        <link rel="next" href="../spatial-layout/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Feature schemas - Pourpoint and HFX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vector-feature-schemas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Pourpoint and HFX" class="md-header__button md-logo" aria-label="Pourpoint and HFX" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pourpoint and HFX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Feature schemas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Pourpoint and HFX" class="md-nav__button md-logo" aria-label="Pourpoint and HFX" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Pourpoint and HFX
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pourpoint
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pourpoint
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rasters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Native rasters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Returned objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced source access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HFX
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HFX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bundle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bundle discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature schemas
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#catchments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catchments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rivers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source nodes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flow-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow connectivity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typed-meanings-and-source-fidelity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typed meanings and source fidelity
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spatial-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raster-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Native rasters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#catchments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catchments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rivers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source nodes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flow-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow connectivity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typed-meanings-and-source-fidelity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typed meanings and source fidelity
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="vector-feature-schemas">Vector feature schemas</h1>
+<p>These schemas apply to the <a href="../bundle/">current representation</a>. Physical access
+is specified in <a href="../spatial-layout/">spatial layout</a>.</p>
+<h2 id="catchments">Catchments</h2>
+<p>The catchment GeoParquet file contains one row per drainage unit.
+Attributes and WKB occupy the same row. The required fields are:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Arrow type</th>
+<th>Nullable</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>int64</code></td>
+<td>No</td>
+<td>Positive dataset-local unique unit ID</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td><code>int16</code></td>
+<td>No</td>
+<td>Nonnegative dataset-local resolution tier</td>
+</tr>
+<tr>
+<td><code>parent_id</code></td>
+<td><code>int64</code></td>
+<td>Yes</td>
+<td>Containing unit at a strictly coarser available level</td>
+</tr>
+<tr>
+<td><code>area_km2</code></td>
+<td><code>float32</code></td>
+<td>No</td>
+<td>Local geodesic area in km²</td>
+</tr>
+<tr>
+<td><code>up_area_km2</code></td>
+<td><code>float32</code></td>
+<td>Yes</td>
+<td>Inclusive same-level upstream area in km², under documented dataset semantics</td>
+</tr>
+<tr>
+<td><code>outlet_lon</code></td>
+<td><code>float64</code></td>
+<td>Yes</td>
+<td>Finite EPSG:4326 longitude of a single source-described outlet</td>
+</tr>
+<tr>
+<td><code>outlet_lat</code></td>
+<td><code>float64</code></td>
+<td>Yes</td>
+<td>Finite EPSG:4326 latitude of that outlet</td>
+</tr>
+<tr>
+<td><code>bbox</code></td>
+<td><code>struct&lt;xmin: float32!, ymin: float32!, xmax: float32!, ymax: float32!&gt;</code></td>
+<td>No</td>
+<td>Finite ordered, outward-covering EPSG:4326 bounds; <code>!</code> denotes non-nullable leaves</td>
+</tr>
+<tr>
+<td><code>geometry</code></td>
+<td><code>binary</code></td>
+<td>No</td>
+<td>Exact Polygon or MultiPolygon WKB in EPSG:4326</td>
+</tr>
+</tbody>
+</table>
+<p>Source identity is retained as <code>source_namespace: string</code> and <code>source_id: string</code>
+(non-nullable). A namespace identifies the source product and layer, including
+region/basin where needed for unique source identity. The pair identifies a source
+feature; preserve native ID columns and types independently of the string rendering.
+Only unchanged catchment artifacts from the earlier normalized 0.4.0 publication
+may retain their existing optional source identity fields when documented provenance
+establishes the mapping. Newly produced catchments require both nonnullable fields.</p>
+<p>Smaller levels are coarser. Each coarsest unit has null <code>parent_id</code>; other nonnull
+parents resolve at a strictly coarser available catchment level. A child polygon
+must lie within its declared parent, and sibling polygon interiors must not overlap,
+within explicitly documented numerical geometry tolerances. A producer declares
+the tolerance values, units and comparison method and reports actual validation
+coverage. This contract does not require exhaustive worldwide polygon topology
+certification; full reference and source-fidelity verification is a separate duty.
+Tolerances account for numerical representation, not arbitrary source discrepancies. A violation beyond
+them is nonconforming; recording an anomaly does not waive the invariant. Investigate
+such originals and obtain an explicit contract decision before production rather
+than silently repairing geometry or relaxing containment. Record validation
+coverage separately: sampled checks do not establish worldwide conformance.
+Components may have multiple or no represented outlets, including coastal and
+inland sink polygon-only units. Outlet coordinates are either both null or both
+present. Supply them only for a single source-described outlet; never choose an
+arbitrary representative from multiple outlets or invent a point. Source river
+nodes and associations retain multiple outlet facts independently.</p>
+<p><code>catchment_connectivity</code> distinguishes supplied edges from absent information.
+For a <code>not_supplied</code> level, every graph row has an empty upstream list; that is not
+an assertion of natural termination. The topology declaration applies only to
+supplied levels. Even there, missing links alone do not classify a terminal.
+Preserve source explanations and distinguish subset cuts. Additional typed source
+attributes and nulls remain intact. Preserve native local polygon area separately
+from geodesic <code>area_km2</code>; partitioned drainage area, mainstem-following area and
+upstream polygon-union area are different quantities. Do not relabel one as another.
+Document upstream-area semantics, derivations and anomalies; use null rather than
+an unsupported value.</p>
+<h2 id="rivers">Rivers</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Arrow type</th>
+<th>Nullable</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>int64</code></td>
+<td>No</td>
+<td>Positive dataset-local river ID, unique across river levels</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td><code>int16</code></td>
+<td>No</td>
+<td>Nonnegative river tier; smaller is coarser</td>
+</tr>
+<tr>
+<td><code>parent_id</code></td>
+<td><code>int64</code></td>
+<td>Yes</td>
+<td>Constituent membership in a river at a strictly coarser available tier</td>
+</tr>
+<tr>
+<td><code>source_namespace</code>, <code>source_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source layer identity and ID rendering; retain native ID separately</td>
+</tr>
+<tr>
+<td><code>local_catchment_id</code> (optional column)</td>
+<td><code>int64</code></td>
+<td>Yes</td>
+<td>Sole represented local drainage association; see plural association rules</td>
+</tr>
+<tr>
+<td><code>component_catchment_id</code></td>
+<td><code>int64</code></td>
+<td>Yes</td>
+<td>Associated drainage unit representing the connected network component</td>
+</tr>
+<tr>
+<td><code>upstream_node_id</code>, <code>downstream_node_id</code></td>
+<td><code>int64</code></td>
+<td>Yes</td>
+<td>Source-directed endpoint references to node rows</td>
+</tr>
+<tr>
+<td><code>geometry_orientation</code></td>
+<td><code>int8</code></td>
+<td>No</td>
+<td>0 unspecified, 1 upstream-first, 2 downstream-first</td>
+</tr>
+<tr>
+<td><code>bbox</code></td>
+<td>Catchment bbox struct</td>
+<td>No</td>
+<td>Outward-covering EPSG:4326 bounds</td>
+</tr>
+<tr>
+<td><code>geometry</code></td>
+<td><code>binary</code></td>
+<td>No</td>
+<td>LineString or MultiLineString WKB in EPSG:4326</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>local_catchment_id</code> column is optional. The authoritative plural
+<a href="../spatial-layout/#local-drainage-associations">local drainage associations</a>
+determine whether it may be included and what its values mean.</p>
+<p>Within each feature table, <code>(source_namespace, source_id)</code> is unique across all
+levels; river, node and catchment tables have separate HFX ID domains. Namespaces
+retain source layer identity, not a label inferred from coincident geometry.
+River IDs are not row numbers or globally stable IDs across datasets/versions.
+River and catchment tiers are independent. One-tier rivers need no invented
+parents. Stream order is an attribute, not a tier or universal snapping weight.
+Parent membership does not require equality with the union of child geometries.
+Each nonnull catchment association resolves to a catchment ID; multiple rivers may
+share either target. Sources need not supply components or polygons. Null means no
+represented association, with absence versus unavailable evidence documented.
+Never infer hydrological association solely from spatial intersection.</p>
+<p>Geometry retains coordinate and part order. Do not silently reverse, simplify,
+clip or repair it. Record necessary transformations, including source geometry
+export and reprojection. Orientation 1/2 asserts first-to-last order relative to
+flow; for MultiLineString it also asserts parts are in connected flow order with
+each part consistently oriented. Otherwise use 0. Connectivity and directed node
+references remain authoritative regardless of orientation; 0 is not a failure.</p>
+<h2 id="source-nodes">Source nodes</h2>
+<p>The optional <code>river_nodes</code> family has no flow graph or topology declaration. Required node fields are nonnull <code>id: int64</code>, <code>level: int16</code>,
+<code>source_namespace: string</code>, <code>source_id: string</code>, <code>bbox</code> of the catchment struct
+type, and <code>geometry: binary</code> (Point WKB in EPSG:4326), plus nullable
+<code>coarser_node_id: int64</code>. Node IDs are positive and unique across node tiers;
+<code>level</code> is the nonnegative river tier. A coarser-node reference resolves at a strictly smaller
+level and means source-declared correspondence, not constituent membership.
+Keep source layers distinct even if coordinates and numeric source IDs match.</p>
+<p>Nonnull river endpoint IDs resolve to nodes at that river's level. These references
+are the canonical incidence relation: incoming rivers have that downstream node;
+outgoing rivers have that upstream node. Preserve original incidence strings,
+ordering-dependent width shares, cross-tier reference columns, diagnostics and
+other typed attributes alongside it. Do not invent nodes for sources without them.
+No node reference may be nonnull when the node artifact is absent. Verify that
+source-supplied flow edges and endpoint incidence agree; sharing a node alone does
+not imply every possible incoming/outgoing river pair is a source flow edge.</p>
+<h2 id="flow-connectivity">Flow connectivity</h2>
+<p>Supplied flow graphs are acyclic. <code>tree</code> allows at most one downstream neighbor;
+<code>dag</code> allows splits and reconvergence without duplicating features. Each upstream
+ID denotes an edge from that feature to the row's feature at the same level.
+IDs resolve within the corresponding domain. Lists have no nulls, duplicates or
+self-links. Parent membership is not flow. Validate complete source edges before
+declaring conformance; a cycle cannot be excused by an anomaly note or removed
+silently. Acyclicity does not certify hydrological continuity.</p>
+<h2 id="typed-meanings-and-source-fidelity">Typed meanings and source fidelity</h2>
+<p>HFX fixes structural fields, not a complete source attribute schema. Preserve
+useful source attributes, physical types, nulls and meanings. Explicitly approved
+lossless type mappings may change physical width while preserving exact values and
+nulls; retain original per-source declarations and document the mapping. TDX
+catchment <code>streamID</code> widens int32 to int64 under this rule. Document retained,
+renamed, transformed and omitted fields; a collision with an HFX structural name
+requires an explicit source-column rename map in provenance, not value replacement.
+Retain source field/schema metadata where applicable; update geometry metadata for
+actual delivered CRS and bounds rather than carrying stale projected metadata.</p>
+<p>The optional <code>categorical_columns</code> array binds a dictionary to one scalar column:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"artifact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rivers.parquet"</span><span class="p">,</span><span class="w"> </span><span class="nt">"column"</span><span class="p">:</span><span class="w"> </span><span class="s2">"level"</span><span class="p">,</span><span class="w"> </span><span class="nt">"physical_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int16"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"codes"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"meaning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"segment"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"meaning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reach"</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">"null_meaning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not permitted"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>artifact</code> is an exact local artifact path, <code>column</code> a top-level field name.
+<code>physical_type</code> is one of <code>string</code>, <code>bool</code>, <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code>,
+<code>uint8</code>, <code>uint16</code>, <code>uint32</code>, <code>uint64</code>, matching the Arrow field's logical scalar
+type (dictionary encoding, if present, does not change this type). Codes are unique,
+nonnull JSON values of that type; integer parsing must preserve full precision.
+Every observed nonnull value has one nonempty string meaning. <code>null_meaning</code> is a
+required nonempty description of null interpretation, even for nonnullable fields.
+At most one dictionary binds each artifact/column pair. Dictionaries define dataset
+semantics, not cross-dataset equivalence or Arrow compression. Level descriptions
+supplement HFX ordering, never replace parents/edges. A source <code>termination_kind</code>
+may use this mechanism; no universal outlet vocabulary is required. Preserve
+underspecified source codes with an explicit uncertainty description.</p>
+<p>Subsets retain external source edge identities in source columns and document
+which edges were cut, in each direction; structural graph references still resolve
+within the delivered subset. Never turn a known cut into a source terminal.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
