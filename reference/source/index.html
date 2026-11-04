@@ -1820,7 +1820,7 @@ and field metadata. Remains usable after closure.</p>
 
 
 <h3 id="pourpoint.HydroFabric.candidates" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">candidates</span><span class="p">(</span><span class="n">domain</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bounds</span><span class="p">:</span> <span class="n">Bounds</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">levels</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pa</span><span class="o">.</span><span class="n">Table</span></code>
+            <code class="highlight language-python"><span class="n">candidates</span><span class="p">(</span><span class="n">domain</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bounds</span><span class="p">:</span> <span class="n">BoundingBox</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">levels</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pa</span><span class="o">.</span><span class="n">Table</span></code>
 
 </h3>
 
@@ -1862,11 +1862,12 @@ and field metadata. Remains usable after closure.</p>
                 <code>bounds</code>
             </td>
             <td>
-                  <code><span title="pourpoint.metadata.Bounds">Bounds</span></code>
+                  <code><span title="pourpoint.metadata.BoundingBox">BoundingBox</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Non-wrapping <code>(west, south, east, north)</code> envelope in EPSG:4326.</p>
+                <p>Non-wrapping <code>(west, south, east, north)</code> envelope in EPSG:4326.
+Accepts a four-element sequence or 1D NumPy array of real numbers.</p>
               </div>
             </td>
             <td>
@@ -2469,7 +2470,7 @@ does not necessarily release process-wide cache allocations.</p>
 
 
 <h3 id="pourpoint.rasters.RasterReader.prepare" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">prepare</span><span class="p">(</span><span class="n">envelope</span><span class="p">:</span> <span class="n">Bounds</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">crs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">CRS</span> <span class="o">=</span> <span class="s1">'EPSG:4326'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RasterRequest</span></code>
+            <code class="highlight language-python"><span class="n">prepare</span><span class="p">(</span><span class="n">envelope</span><span class="p">:</span> <span class="n">BoundingBox</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">crs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">CRS</span> <span class="o">=</span> <span class="s1">'EPSG:4326'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RasterRequest</span></code>
 
 </h3>
 
@@ -2495,11 +2496,12 @@ does not necessarily release process-wide cache allocations.</p>
                 <code>envelope</code>
             </td>
             <td>
-                  <code><span title="pourpoint.metadata.Bounds">Bounds</span></code>
+                  <code><span title="pourpoint.metadata.BoundingBox">BoundingBox</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Positive-area <code>(xmin, ymin, xmax, ymax)</code> bounds in <code>crs</code>.
+                <p>Positive-area <code>(xmin, ymin, xmax, ymax)</code> bounds in <code>crs</code>, as a
+four-element sequence or 1D NumPy array of real numbers.
 Geographic bounds must not wrap the antimeridian.</p>
               </div>
             </td>

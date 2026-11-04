@@ -2009,6 +2009,16 @@ aggregated, and no source access or geometry repair is performed.</p>
     </table>
 
 
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>Large inputs are unioned in bounded groups, using retained HFX physical
+addresses when available. Grouping does not change the input sequence or
+source values. Union workspaces are serialized across threads in this
+process, with up to two group unions active within a workspace. This bounds
+simultaneous decoding and union work, not retained caller inputs, outputs
+or total process memory. Independent processes have independent bounds.</p>
+</details>
+
     </div>
 
 </div>
@@ -2400,7 +2410,13 @@ fabric context; current raster subsets already contain materialized arrays.</p>
 <p>Scalar source fields become ordinary vector columns. Reserved-name collisions
 gain <code>source_</code> prefixes; <code>source_metadata.attribute_columns</code> records names.
 Rich values, original WKB and Arrow schemas/metadata are losslessly retained
-as IPC streams in <code>source_arrow</code>. Result locations are WGS84 WKB in
+as IPC streams in <code>source_arrow</code>. Each <code>stream_id</code> identifies one source
+table, including distinct node records. Concatenate its <code>payload</code> values
+in ascending <code>part</code> order before opening the IPC stream. Small streams
+occupy one row. Parts are byte segments, not independent IPC streams.
+Individual geometry and ordinary attribute values must still fit SQLite's
+value/row limits; segmentation removes the aggregate source-IPC limit only.
+Result locations are WGS84 WKB in
 <code>result_metadata</code>, alongside provenance; these are not extra map layers.</p>
 </details>
 
