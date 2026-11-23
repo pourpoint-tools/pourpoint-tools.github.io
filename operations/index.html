@@ -403,6 +403,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Selection and refinement conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flow-direction-loops-in-grit-v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow-direction loops in GRIT v1.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -920,6 +937,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Selection and refinement conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flow-direction-loops-in-grit-v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow-direction loops in GRIT v1.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -980,10 +1014,26 @@ areas or orders.</p>
 <h2 id="selection-and-refinement-conventions">Selection and refinement conventions</h2>
 <p>Selection defaults to catchment level 1, never the finest available level.
 Point boundary ownership uses the smallest intersecting source ID. Regions include
-boundary intersections. Empty geometries give valid empty selections; nonempty
-targets with no intersecting unit raise <code>selection.no_coverage</code>. Missing or explicitly
-unsupplied connectivity fails rather than returning an apparently complete answer.
-Malformed flow edges crossing levels raise an integrity error.</p>
+boundary intersections. Empty geometries give valid empty <code>SelectionResult</code> values
+with <code>coverage.status == "not_assessed"</code>; nonempty targets with no intersecting
+unit raise <code>selection.no_coverage</code>. Missing or explicitly unsupplied connectivity
+fails with <code>selection.connectivity_unavailable</code> rather than returning an apparently
+complete answer. Malformed flow edges crossing levels raise an integrity error.</p>
+<p>Selection and <code>delineate</code> check the requested level's HFX
+<code>catchment_connectivity</code> completeness declarations and per-unit cut column across
+the entire inclusive upstream closure before raster refinement or merging. When
+completeness is <code>"partial"</code>, every visited catchment must have a non-null zero
+in the declared <code>upstream_cuts_column</code> to pass by default (<code>coverage.status == "complete"</code>).
+Closures with positive cut counts (<code>selection.incomplete_coverage</code>), null cut counts
+(<code>selection.unverified_coverage</code>), both (<code>selection.incomplete_and_unverified_coverage</code>),
+or missing/uninstrumented completeness metadata (<code>selection.coverage_not_assessed</code>)
+fail by default. Pass <code>allow_incomplete=True</code> to return those results with their
+attached <code>UpstreamCoverage</code> diagnostics; <code>allow_incomplete=True</code> does not bypass
+unavailable connectivity or corrupt schemas, types, negative cut values, or values
+contradicting a <code>"complete"</code> declaration. Passing a <code>SelectionResult</code> (or selection
+<code>BatchResult</code>) to <code>refine</code> retains the original source-network coverage diagnostics
+on <code>GranularRefinement.coverage</code>, whereas manually supplied sub-basins or footprints
+receive <code>coverage.status == "not_assessed"</code>.</p>
 <p>Refinement assumes vector/raster equivalence; it does not certify that scientific
 assumption. The whole selected vector footprint is the computational mask.
 Native cells are admitted by their centers using GDAL rasterization. The local
@@ -997,6 +1047,18 @@ intersected with source polygons for granular output. This keeps merged granular
 and footprint outputs equivalent, without hole filling or untouched upstream units.
 The outlet cell retains global source-grid row/column, CRS and affine. Its center
 is a display location, not improved station accuracy.</p>
+<h3 id="flow-direction-loops-in-grit-v10">Flow-direction loops in GRIT v1.0</h3>
+<p>Where the original GRIT v1.0 drainage-direction rasters were merged, some cells
+point to one another in a loop. Water routed into a loop never reaches the
+outlet. Raster refinement can therefore leave holes in the watershed and
+underestimate its contributing area even when <code>coverage.status == "complete"</code>.
+That status describes the upstream connections between source sub-basins.
+To delineate whole upstream sub-basins using those connections, use
+<code>delineate(..., refine=False)</code>.</p>
+<p>The GRIT maintainer plans to correct the raster merge in v1.1. Once the
+corrected rasters reach the hosted HFX bundle, the planned check repeats
+the delineation at CAMELS gauge <code>02472000</code>, where the loops were verified.
+See the <a href="https://github.com/pourpoint-tools/hfx/issues/269#issuecomment-7104717277">upstream diagnosis and retest plan</a>.</p>
 <h2 id="batches-and-failures">Batches and failures</h2>
 <p>Dictionary keys name targets; list entries receive UUIDs once per accepted batch.
 Duplicate geometries remain independent targets. <code>BatchResult.targets</code> preserves
@@ -1046,7 +1108,9 @@ types/nulls and field/schema metadata remain lossless Arrow IPC stream blobs in
 <code>source_arrow</code>, keyed by layer and source row or relationship kind. Use
 <code>pyarrow.ipc.open_stream(payload).read_all()</code> to read them. <code>source_metadata</code> keeps
 attribute-column mappings and source declarations; colliding scalar names receive
-<code>source_</code> prefixes. <code>river_connections</code> exposes directed supplied relations as
+<code>source_</code> prefixes. <code>result_metadata</code> retains target provenance, WGS84 target WKB
+and JSON-encoded <code>UpstreamCoverage</code> diagnostics across <code>SelectionResult</code>,
+<code>DelineationResult</code>, <code>GranularRefinement</code> and <code>FootprintRefinement</code> exports. <code>river_connections</code> exposes directed supplied relations as
 ordinary rows, alongside lossless relationship and node tables. Target identity
 columns are separate from source IDs. Original source geometry remains in Arrow
 provenance even where a displayed feature is clipped.</p>

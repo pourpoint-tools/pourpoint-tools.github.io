@@ -1084,8 +1084,37 @@ Tolerances account for numerical representation, not arbitrary source discrepanc
 them is nonconforming; recording an anomaly does not waive the invariant. Investigate
 such originals and obtain an explicit contract decision before production rather
 than silently repairing geometry or relaxing containment. Record validation
-coverage separately: sampled checks do not establish worldwide conformance.
-Components may have multiple or no represented outlets, including coastal and
+coverage separately: sampled checks do not establish worldwide conformance.</p>
+<p>For MERIT-Basins source catchments only, an explicitly approved narrow ring-normalization
+rule admits invalid source polygons whose raw OGC validity failure begins with
+<code>Ring Self-intersection[</code> (raster-to-polygon self-touching rings at pixel corners),
+without authorizing arbitrary geometry cleanup, simplification, hole filling, or a new
+HFX format version. Already valid source geometries remain unchanged. An eligible
+MERIT repair is admitted only when every check below passes without relaxing
+thresholds:</p>
+<ol>
+<li>Output is a valid, non-empty <code>Polygon</code> or <code>MultiPolygon</code> without Z or M ordinates
+   and with finite WGS84 coordinates within declared bounds.</li>
+<li>Exact IEEE 754 <code>float64</code> source vertex set is preserved.</li>
+<li>Exact IEEE 754 <code>float64</code> source undirected edge multiset is preserved, retaining all
+   holes and disconnected components without moving, filling, simplifying, or
+   discarding source land.</li>
+<li>WGS84 geodesic area changes by at most <code>max(1e-9, 1e-12 * raw_area_km2)</code> km².</li>
+<li>Sibling interior non-overlap (<code>DE-9IM</code> pattern <code>2********</code> is false) holds against all
+   relevant delivered neighbors globally across partitions and coastal hillslopes,
+   including other candidate repairs; pre-existing overlap is not waived.</li>
+</ol>
+<p>Features outside this rule or failing any acceptance check remain omitted with explicit
+reasons in <code>omitted-features.json</code>. Real-area MERIT catchment gaps are restored only
+through valid source-backed polygons under this rule and are never bridged by graph
+contraction, preserving TDX-Hydro's distinct zero-length, zero-area virtual-link
+contraction rule without broadening it. Every MERIT catchment records non-nullable
+<code>geometry_normalization: string</code> (<code>"original"</code> or <code>"ring_self_intersection_split"</code>,
+declared in <code>categorical_columns</code>), per-feature audit records with original WKB, raw
+failure reason, ring/part counts, algorithm, and measured checks in
+<code>repaired-features.jsonl.gz</code>, and library versions and exhaustive per-partition counts
+in <code>source-metadata.json</code>.</p>
+<p>Components may have multiple or no represented outlets, including coastal and
 inland sink polygon-only units. Outlet coordinates are either both null or both
 present. Supply them only for a single source-described outlet; never choose an
 arbitrary representative from multiple outlets or invent a point. Source river
@@ -1100,6 +1129,21 @@ from geodesic <code>area_km2</code>; partitioned drainage area, mainstem-followi
 upstream polygon-union area are different quantities. Do not relabel one as another.
 Document upstream-area semantics, derivations and anomalies; use null rather than
 an unsupported value.</p>
+<p>For supplied catchment levels with <code>completeness: "partial"</code>, producers may supply
+per-unit completeness and boundary fields:</p>
+<ul>
+<li><code>upstream_boundary_cuts</code> (<code>int32</code>, nullable): nonnegative count of immediate
+  incoming source edges whose upstream catchment is absent or omitted (<code>0</code> when all
+  immediate incoming source edges resolve to delivered catchments; <code>&gt; 0</code> when
+  immediate incoming edges were cut). <code>null</code> means incoming catchment connectivity
+  could not be verified from valid source topology (such as unchannelized coastal
+  hillslopes without a topology table or catchments whose paired source river was
+  omitted for degenerate geometry).</li>
+<li>Optional dataset <code>downstream_boundary_status</code> (<code>string</code>, non-nullable, documented in
+  <code>categorical_columns</code>) distinguishing <code>"internal"</code> downstream edges from source zero
+  sentinels, downstream cuts to missing catchments, omitted degenerate rivers, and
+  unassociated coastal hillslopes.</li>
+</ul>
 <h2 id="rivers">Rivers</h2>
 <table>
 <thead>
@@ -1217,12 +1261,40 @@ IDs resolve within the corresponding domain. Lists have no nulls, duplicates or
 self-links. Parent membership is not flow. Validate complete source edges before
 declaring conformance; a cycle cannot be excused by an anomaly note or removed
 silently. Acyclicity does not certify hydrological continuity.</p>
+<p>When catchment connectivity is derived from supplied river connectivity and verified
+1-to-1 local drainage associations, only immediate edges whose upstream and
+downstream rivers both have delivered associated catchments are materialized in the
+catchment flow graph; omitted or missing polygons with drainage area (such as TDX
+<code>LINKNO == 0</code> omissions) are never contracted or bridged across gaps, and missing
+links are never turned into natural outlets.</p>
+<p>Where a river network represents multi-way confluences with zero-length, zero-area
+virtual links (for example, TauDEM binary junctions in TDX-Hydro where <code>Length == 0</code>,
+<code>geom.length == 0</code>, <code>DSContArea == USContArea</code>, <code>upstream_degree &gt;= 1</code>, and
+<code>downstream_degree == 1</code>, failing closed on any null or non-finite value),
+exhaustively verified virtual stubs may be contracted in the derived catchment flow
+graph while leaving the river flow graph untouched. Transitive contraction propagates
+both upstream catchments and incoming boundary cuts into the downstream catchment and
+never bridges across a non-contracted polygonless river.</p>
+<p>When a level declares <code>completeness: "partial"</code> with <code>upstream_cuts_column</code>, an
+upstream catchment selection is complete relative to the source network if and only
+if every visited unit in the traversed closure has non-null
+<code>upstream_boundary_cuts == 0</code> (or the declared column equals <code>0</code>). If any visited
+unit has a positive cut count or <code>null</code>, consumers must not return an ordinary
+complete result; partial results require explicit opt-in and missing-coverage
+reporting. Provenance metadata alone does not enforce this runtime check; consumer
+support requires explicit coordination.</p>
 <h2 id="typed-meanings-and-source-fidelity">Typed meanings and source fidelity</h2>
 <p>HFX fixes structural fields, not a complete source attribute schema. Preserve
 useful source attributes, physical types, nulls and meanings. Explicitly approved
 lossless type mappings may change physical width while preserving exact values and
 nulls; retain original per-source declarations and document the mapping. TDX
-catchment <code>streamID</code> widens int32 to int64 under this rule. Document retained,
+catchment <code>streamID</code> widens int32 to int64 under this rule. Where a source exports
+multi-part catchments as separate single-part <code>POLYGON</code> rows sharing an association
+key (TDX basins <code>1020018110</code> and <code>5020049720</code>), collecting those fragments into one
+OGC-valid <code>MultiPolygon</code> without dissolving or altering coordinates retains
+<code>min(source_fids)</code> in <code>fid</code> and <code>source_id</code> (keeping <code>source_id</code> unique within
+<code>source_namespace</code>) and preserves every original <code>fid</code> in ascending order in nonnull
+<code>source_fids: list&lt;int64&gt;</code>. Document retained,
 renamed, transformed and omitted fields; a collision with an HFX structural name
 requires an explicit source-column rename map in provenance, not value replacement.
 Retain source field/schema metadata where applicable; update geometry metadata for

@@ -1003,7 +1003,12 @@ A retained source manifest is provenance, not a raster declaration.</p>
 </code></pre></div>
 <p>The three metadata fields are required, without defaults or additional metadata
 properties. <code>crs</code> is an uppercase EPSG authority string matching
-<code>^EPSG:[1-9][0-9]*$</code>. <code>flow_dir_encoding</code> is <code>esri</code>, <code>taudem</code> or <code>grass</code>.
+<code>^EPSG:[1-9][0-9]*$</code>. <code>flow_dir_encoding</code> is <code>esri</code>, <code>merit</code>, <code>taudem</code> or <code>grass</code>.
+<code>flow_dir_encoding</code> participates in auxiliary capability selection: <code>esri</code>
+remains strictly the eight positive ESRI D8 neighbor codes (<code>1</code> through <code>128</code>), so
+readers supporting only <code>esri</code>, <code>taudem</code> and <code>grass</code> reject <code>merit</code> when opening
+raster declarations rather than failing data-dependently when a window hits
+terminal cells.
 <code>flow_acc_units</code> is <code>cells</code> or <code>km2</code>. The manifest's existing top-level <code>crs</code>
 remains the vector CRS (<code>EPSG:4326</code>); it does not override a raster entry's CRS.</p>
 <h2 id="native-grid-and-headers">Native grid and headers</h2>
@@ -1030,6 +1035,7 @@ reads rather than inferring suitability from a file extension.</p>
 <tr>
 <th>Direction</th>
 <th style="text-align: right;">ESRI</th>
+<th style="text-align: right;">MERIT</th>
 <th style="text-align: right;">TauDEM</th>
 <th style="text-align: right;">GRASS</th>
 </tr>
@@ -1039,10 +1045,12 @@ reads rather than inferring suitability from a file extension.</p>
 <td>East</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">8</td>
 </tr>
 <tr>
 <td>Southeast</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">7</td>
@@ -1050,11 +1058,13 @@ reads rather than inferring suitability from a file extension.</p>
 <tr>
 <td>South</td>
 <td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">6</td>
 </tr>
 <tr>
 <td>Southwest</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">5</td>
@@ -1062,11 +1072,13 @@ reads rather than inferring suitability from a file extension.</p>
 <tr>
 <td>West</td>
 <td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">4</td>
 </tr>
 <tr>
 <td>Northwest</td>
+<td style="text-align: right;">32</td>
 <td style="text-align: right;">32</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">3</td>
@@ -1074,18 +1086,28 @@ reads rather than inferring suitability from a file extension.</p>
 <tr>
 <td>North</td>
 <td style="text-align: right;">64</td>
+<td style="text-align: right;">64</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">2</td>
 </tr>
 <tr>
 <td>Northeast</td>
 <td style="text-align: right;">128</td>
+<td style="text-align: right;">128</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
-<p>ESRI uses powers of two. TauDEM numbers counterclockwise from east; GRASS
+<p>ESRI uses powers of two (<code>1</code> through <code>128</code>). <code>merit</code> uses those same eight ESRI D8
+neighbor powers for outgoing neighbors plus two distinct valid terminal codes
+with no downstream neighbor: <code>0</code> for river mouth and <code>255</code> (<code>uint8</code>) or <code>-1</code>
+(<code>int8</code>) for inland depression. Both <code>merit</code> terminal codes are valid data
+cells (not nodata) and are terminal for upstream D8 tracing, while remaining
+distinct in raw direction values. Undefined ocean cells use the GeoTIFF header
+nodata tag (such as <code>247</code> for unsigned MERIT Hydro direction, corresponding to
+documented signed <code>-9</code>), never guessed from direction codes and never collapsed
+with <code>0</code> or <code>255</code>. TauDEM numbers counterclockwise from east; GRASS
 <code>r.watershed</code> numbers counterclockwise from northeast. For GRASS with <code>uint8</code>,
 valid data codes are 0 through 8; 0 denotes a terminal cell with no downstream
 neighbor. For signed GRASS values, a negative value gives the direction of its

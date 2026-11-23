@@ -872,6 +872,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pourpoint.metadata.CatchmentConnectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CatchmentConnectivity
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1403,6 +1414,17 @@
     <span class="md-ellipsis">
       
         SpatialManifest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.metadata.CatchmentConnectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CatchmentConnectivity
       
     </span>
   </a>
@@ -2694,8 +2716,10 @@ remain on the native grid.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Caller-owned native-grid arrays. Direction codes are normalized;
-accumulation values retain their source dtype and units.</p>
+                <p>Caller-owned native-grid arrays. Direction codes declared as
+<code>esri</code>, <code>merit</code>, <code>taudem</code> or <code>grass</code> are normalized, while
+<code>raw_direction</code> retains original source values and dtype.
+Accumulation values retain their source dtype and units.</p>
               </div>
             </td>
           </tr>
@@ -3002,7 +3026,10 @@ arrays within that grid.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Original encoded direction values when retained, otherwise <code>None</code>.</p>
+                <p>Original encoded direction values and source dtype (<code>uint8</code> or
+<code>int8</code>) when retained, otherwise <code>None</code>. Preserves distinctions
+collapsed into normalized terminal <code>0</code> (such as MERIT river mouth
+<code>0</code> versus inland depression <code>255</code> or <code>-1</code>).</p>
               </div>
             </td>
           </tr>
@@ -3236,6 +3263,147 @@ declaration does not establish a natural outlet.</p>
               <div class="doc-md-description">
                 <p>Complete source manifest, including provenance, raster declarations and
 otherwise unrecognized metadata. No source attributes are standardized.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.metadata.SpatialManifest.catchment_connectivity">catchment_connectivity</span></code></td>
+            <td>
+                  <code><span title="collections.abc.Mapping">Mapping</span>[<span title="int">int</span>, <a class="autorefs autorefs-internal" title="pourpoint.metadata.CatchmentConnectivity
+
+
+  
+      dataclass
+  " href="#pourpoint.metadata.CatchmentConnectivity">CatchmentConnectivity</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Per-level catchment connectivity and completeness declarations keyed by
+nonnegative catchment level. Absent levels remain unassessed.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="pourpoint.metadata.CatchmentConnectivity" class="doc doc-heading">
+            <code>pourpoint.metadata.CatchmentConnectivity</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Published catchment connectivity and completeness declarations for one level.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.metadata.CatchmentConnectivity.level">level</span></code></td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Nonnegative catchment level to which this declaration applies.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.metadata.CatchmentConnectivity.status">status</span></code></td>
+            <td>
+                  <code><span title="typing.Literal">Literal</span>[&#39;supplied&#39;, &#39;not_supplied&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether same-level catchment connectivity is <code>"supplied"</code> or
+<code>"not_supplied"</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.metadata.CatchmentConnectivity.completeness">completeness</span></code></td>
+            <td>
+                  <code><span title="typing.Literal">Literal</span>[&#39;complete&#39;, &#39;partial&#39;] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Declared source-network completeness when supplied: <code>"complete"</code>,
+<code>"partial"</code>, or <code>None</code> when completeness metadata was omitted.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.metadata.CatchmentConnectivity.upstream_cuts_column">upstream_cuts_column</span></code></td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Top-level catchment integer column name reporting per-unit immediate
+upstream cut counts (where <code>0</code> means verified complete, <code>&gt; 0</code> means
+known missing upstream connections, and <code>null</code> means unverified), or
+<code>None</code> when absent.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.metadata.CatchmentConnectivity.derivation">derivation</span></code></td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional source derivation note, or <code>None</code> when omitted.</p>
               </div>
             </td>
           </tr>

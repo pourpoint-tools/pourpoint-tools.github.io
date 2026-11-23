@@ -1145,7 +1145,7 @@
 
 
 <h2 id="pourpoint.select_upstream_subbasins" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">select_upstream_subbasins</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="n">Targets</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]]</span></code>
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">select_upstream_subbasins</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="n">Targets</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">allow_incomplete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SelectionResult</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">SelectionResult</span><span class="p">]</span></code>
 
 </h2>
           <div class="doc-overloads">
@@ -1154,15 +1154,17 @@
     <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
     <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span><span class="p">,</span>
     <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">allow_incomplete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SelectionResult</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">select_upstream_subbasins</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
     <span class="n">target</span><span class="p">:</span> <span class="n">Targets</span><span class="p">,</span>
     <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">allow_incomplete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BatchResult</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">SelectionResult</span><span class="p">]</span>
 </code></pre></div>          </div>
 
 
@@ -1235,6 +1237,27 @@ supplied catchment ID; river associations do not determine ownership.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
+                <code>allow_incomplete</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Accept selections whose upstream closure has known missing upstream
+connections, unverified (null) cut counts, or missing completeness
+assessment metadata. Returned <code>UpstreamCoverage</code> diagnostics retain
+all affected IDs and counts without promoting them to complete.
+Unavailable connectivity and corrupt source schemas or cut values still
+raise even when <code>allow_incomplete=True</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                 <code>n_jobs</code>
             </td>
             <td>
@@ -1265,7 +1288,12 @@ and positive values bound worker-owned readers. Single calls are serial.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span> or <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.SelectionResult
+
+
+  
+      dataclass
+   (pourpoint.results.SelectionResult)" href="../results/#pourpoint.SelectionResult">SelectionResult</a> or <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
 
 
   
@@ -1274,8 +1302,9 @@ and positive values bound worker-owned readers. Single calls are serial.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whole intersecting units and their inclusive upstream closure. An empty
-geometry succeeds with an empty list. Batch slots preserve input order;
+                <p>Selected whole units and source-network <code>UpstreamCoverage</code> diagnostics.
+An empty geometry succeeds without opt-in with empty sub-basins and
+<code>coverage.status == "not_assessed"</code>. Batch slots preserve input order;
 dictionary keys are names, while list entries get new UUID names on
 each call. Duplicate geometries remain independent targets.</p>
               </div>
@@ -1301,8 +1330,13 @@ each call. Duplicate geometries remain independent targets.</p>
             <td>
               <div class="doc-md-description">
                 <p><code>selection.invalid_target</code> for invalid geometry,
-<code>selection.no_coverage</code> for a nonempty target without coverage, or
-<code>selection.connectivity_unavailable</code> for unsupplied connectivity.
+<code>selection.no_coverage</code> for a nonempty target without coverage,
+<code>selection.connectivity_unavailable</code> for unsupplied connectivity,
+<code>selection.incomplete_coverage</code> when visited units have positive cuts,
+<code>selection.unverified_coverage</code> when visited units have null cuts,
+<code>selection.incomplete_and_unverified_coverage</code> when both occur, or
+<code>selection.coverage_not_assessed</code> when completeness metadata or a
+usable cut column is missing (unless <code>allow_incomplete=True</code>).
 Batches retain these failures as issues with None result slots.</p>
               </div>
             </td>
@@ -1313,7 +1347,9 @@ Batches retain these failures as issues with None result slots.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Invalid level or worker count, or a flow relationship crossing levels.</p>
+                <p>Invalid level or worker count, a flow relationship crossing levels,
+missing or non-integer declared cut columns, negative cut counts, or
+cuts/nulls contradicting a <code>complete</code> declaration.</p>
               </div>
             </td>
           </tr>
@@ -1323,7 +1359,8 @@ Batches retain these failures as issues with None result slots.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Invalid target type or batch names.</p>
+                <p>Invalid target type, nonboolean <code>allow_incomplete</code>, or invalid batch
+names.</p>
               </div>
             </td>
           </tr>
@@ -1334,8 +1371,9 @@ Batches retain these failures as issues with None result slots.</p>
 <details class="note" open>
   <summary>Notes</summary>
   <p>This is whole-unit selection, not exact-point raster delineation. Returned
-vectors survive fabric closure. Integrity, configuration and unexpected
-failures propagate even in batches; they are not empty selections.</p>
+vectors and coverage diagnostics survive fabric closure. Integrity,
+configuration and unexpected failures propagate even in batches; they are
+not empty selections.</p>
 </details>
 
     </div>
@@ -1346,7 +1384,7 @@ failures propagate even in batches; they are not empty selections.</p>
 
 
 <h2 id="pourpoint.delineate" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">delineate</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="n">Targets</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">snap_onto</span><span class="p">:</span> <span class="n">SnapGeometry</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">refine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DelineationResult</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">DelineationResult</span><span class="p">]</span></code>
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">delineate</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="n">Targets</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">snap_onto</span><span class="p">:</span> <span class="n">SnapGeometry</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">refine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">allow_incomplete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DelineationResult</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">DelineationResult</span><span class="p">]</span></code>
 
 </h2>
           <div class="doc-overloads">
@@ -1360,6 +1398,7 @@ failures propagate even in batches; they are not empty selections.</p>
     <span class="n">refine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">allow_incomplete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DelineationResult</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">delineate</span><span class="p">(</span>
@@ -1372,6 +1411,7 @@ failures propagate even in batches; they are not empty selections.</p>
     <span class="n">refine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">allow_incomplete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">DelineationResult</span><span class="p">]</span>
 </code></pre></div>          </div>
@@ -1529,6 +1569,24 @@ refinement. This is a practical choice, not a universal scientific optimum.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
+                <code>allow_incomplete</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Accept selections with incomplete, unverified or unassessed upstream
+source-network coverage, following <code>select_upstream_subbasins</code>. Coverage
+is assessed before raster refinement or merging.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                 <code>n_jobs</code>
             </td>
             <td>
@@ -1574,8 +1632,9 @@ and positive values bound worker-owned readers.</p>
             <td>
               <div class="doc-md-description">
                 <p>Whole units or refined contributions, optional merged geometry, original
-and adjusted targets, source declarations, and any selected outlet and
-raster subsets. Batch identity and order are retained.</p>
+and adjusted targets, source declarations, source-network coverage
+assessment, and any selected outlet and raster subsets. Batch identity
+and order are retained.</p>
               </div>
             </td>
           </tr>
@@ -1610,9 +1669,10 @@ Batches record them as issues and None slots, not coarse successes.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Invalid level, worker count, radius or window size, or invalid supplied
-stream geometry. Shared configuration and integrity failures propagate
-rather than becoming batch issues.</p>
+                <p>Invalid level, worker count, radius or window size, invalid supplied
+stream geometry, or corrupt connectivity/cut metadata. Shared
+configuration and integrity failures propagate rather than becoming
+batch issues.</p>
               </div>
             </td>
           </tr>
@@ -1622,7 +1682,8 @@ rather than becoming batch issues.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Invalid target types or nonboolean refinement/merge controls.</p>
+                <p>Invalid target types or nonboolean refinement/merge/completeness
+controls.</p>
               </div>
             </td>
           </tr>
@@ -1632,9 +1693,11 @@ rather than becoming batch issues.</p>
 
 <details class="note" open>
   <summary>Notes</summary>
-  <p>No separate delineation algorithm is used. Vector outputs are materialized
-and remain usable after fabric closure. Vector snapping and raster outlet
-adjustment are distinct: the latter is retained in <code>outlet_cell</code>.</p>
+  <p>No separate delineation algorithm is used. Vector outputs and coverage
+diagnostics are materialized and remain usable after fabric closure. Vector
+snapping and raster outlet adjustment are distinct: the latter is retained
+in <code>outlet_cell</code>. Source-network coverage on <code>DelineationResult</code> still
+describes the selected vector closure, not raster completeness.</p>
 </details>
 
     </div>
@@ -1645,14 +1708,14 @@ adjustment are distinct: the latter is retained in <code>outlet_cell</code>.</p>
 
 
 <h2 id="pourpoint.refine" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Point</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">subbasins</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">footprint</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GranularRefinement</span> <span class="o">|</span> <span class="n">FootprintRefinement</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">GranularRefinement</span><span class="p">]</span></code>
+            <code class="highlight language-python"><span class="n">pourpoint</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Point</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">subbasins</span><span class="p">:</span> <span class="n">SelectionResult</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">SelectionResult</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">footprint</span><span class="p">:</span> <span class="n">BaseGeometry</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GranularRefinement</span> <span class="o">|</span> <span class="n">FootprintRefinement</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">GranularRefinement</span><span class="p">]</span></code>
 
 </h2>
           <div class="doc-overloads">
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">refine</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
-    <span class="n">subbasins</span><span class="p">:</span> <span class="n">BatchResult</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">]],</span>
+    <span class="n">subbasins</span><span class="p">:</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">SelectionResult</span><span class="p">],</span>
     <span class="n">target</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">footprint</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -1662,7 +1725,7 @@ adjustment are distinct: the latter is retained in <code>outlet_cell</code>.</p>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">fabric</span><span class="p">:</span> <span class="n">HydroFabric</span><span class="p">,</span>
     <span class="n">target</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span>
-    <span class="n">subbasins</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">],</span>
+    <span class="n">subbasins</span><span class="p">:</span> <span class="n">SelectionResult</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Subbasin</span><span class="p">],</span>
     <span class="n">footprint</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -1733,7 +1796,12 @@ batch, which carries its own target geometries.</p>
                 <code>subbasins</code>
             </td>
             <td>
-                  <code><span title="collections.abc.Sequence">Sequence</span>[<a class="autorefs autorefs-internal" title="pourpoint.Subbasin
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.SelectionResult
+
+
+  
+      dataclass
+   (pourpoint.results.SelectionResult)" href="../results/#pourpoint.SelectionResult">SelectionResult</a> | <span title="collections.abc.Sequence">Sequence</span>[<a class="autorefs autorefs-internal" title="pourpoint.Subbasin
 
 
   
@@ -1743,18 +1811,22 @@ batch, which carries its own target geometries.</p>
 
   
       dataclass
-   (pourpoint.results.BatchResult)" href="../results/#pourpoint.BatchResult">BatchResult</a>[<span title="list">list</span>[<a class="autorefs autorefs-internal" title="pourpoint.Subbasin
+   (pourpoint.results.BatchResult)" href="../results/#pourpoint.BatchResult">BatchResult</a>[<a class="autorefs autorefs-internal" title="pourpoint.SelectionResult
 
 
   
       dataclass
-   (pourpoint.features.Subbasin)" href="../results/#pourpoint.Subbasin">Subbasin</a>]] | None</code>
+   (pourpoint.results.SelectionResult)" href="../results/#pourpoint.SelectionResult">SelectionResult</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whole source units forming one mask, or a selection <code>BatchResult</code>.
-Mutually exclusive with <code>footprint</code>. Batch identity, order and prior
-issues are preserved; failed slots are not retried.</p>
+                <p>A <code>SelectionResult</code>, whole source units forming one mask, or a
+selection <code>BatchResult</code>. Mutually exclusive with <code>footprint</code>.
+Passing a <code>SelectionResult</code> or selection batch preserves its
+source-network <code>UpstreamCoverage</code> diagnostics on the refined output;
+manually supplied sub-basins receive <code>status="not_assessed"</code>. Batch
+identity, order and prior issues are preserved; failed slots are not
+retried.</p>
               </div>
             </td>
             <td>
@@ -1770,8 +1842,9 @@ issues are preserved; failed slots are not retried.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Nonempty Polygon or MultiPolygon in EPSG:4326, used as one mask.
-Supply exactly one mask form. Batch footprints come from <code>subbasins</code>.</p>
+                <p>Nonempty Polygon or MultiPolygon in EPSG:4326, used as one mask
+(<code>coverage.status == "not_assessed"</code>). Supply exactly one mask form.
+Batch footprints come from <code>subbasins</code>.</p>
               </div>
             </td>
             <td>
@@ -1849,7 +1922,8 @@ and positive values bound worker-owned readers.</p>
             <td>
               <div class="doc-md-description">
                 <p>Contributions for sub-basin input or one footprint for geometry input,
-plus the selected native outlet cell and materialized raster subsets.
+the selected native outlet cell, materialized raster subsets, and
+retained or <code>"not_assessed"</code> source-network coverage diagnostics.
 Empty source pieces are omitted. Both forms trace the same combined
 mask; merging granular contributions yields the footprint result.</p>
               </div>
@@ -1901,7 +1975,8 @@ Integrity and unexpected errors also propagate, including in batches.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A single call omits <code>target</code>.</p>
+                <p>A single call omits <code>target</code>, or a batch slot is not a
+<code>SelectionResult</code>.</p>
               </div>
             </td>
           </tr>
@@ -2417,7 +2492,8 @@ occupy one row. Parts are byte segments, not independent IPC streams.
 Individual geometry and ordinary attribute values must still fit SQLite's
 value/row limits; segmentation removes the aggregate source-IPC limit only.
 Result locations are WGS84 WKB in
-<code>result_metadata</code>, alongside provenance; these are not extra map layers.</p>
+<code>result_metadata</code>, alongside provenance and JSON-encoded
+<code>UpstreamCoverage</code> diagnostics; these are not extra map layers.</p>
 </details>
 
 
@@ -2629,14 +2705,14 @@ unrelated corners of the rectangular window.</p>
 
 
 <h3 id="pourpoint.QGISBundle.add_result" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">add_result</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="n">ExportResult</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">ExportResult</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Self</span></code>
+            <code class="highlight language-python"><span class="n">add_result</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="n">ExportResult</span> <span class="o">|</span> <span class="n">ExportBatch</span> <span class="o">|</span> <span class="n">BatchResult</span><span class="p">[</span><span class="n">ExportResult</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Self</span></code>
 
 </h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Add available delineation or refinement outputs without computing more.</p>
+        <p>Add available selection, delineation or refinement outputs without computing more.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -2655,7 +2731,7 @@ unrelated corners of the rectangular window.</p>
                 <code>result</code>
             </td>
             <td>
-                  <code><span title="pourpoint.qgis.ExportResult">ExportResult</span> | <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
+                  <code><span title="pourpoint.qgis.ExportResult">ExportResult</span> | <span title="pourpoint.qgis.ExportBatch">ExportBatch</span> | <a class="autorefs autorefs-internal" title="pourpoint.BatchResult
 
 
   
@@ -2664,12 +2740,14 @@ unrelated corners of the rectangular window.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A single result or its batch container. Each batch target gets its
-named group and retained identity; failures go into <code>target_issues</code>
-without fabricated features. Available outputs include sub-basins,
-merged footprint, outlined native-CRS outlet cell and one raster
-pair per refined target. Overlapping targets may duplicate pixels.
-Granular refinement is not silently merged into another layer.</p>
+                <p>A single result (<code>SelectionResult</code>, <code>DelineationResult</code>,
+<code>GranularRefinement</code> or <code>FootprintRefinement</code>) or its batch
+container. Each batch target gets its named group and retained
+identity; failures go into <code>target_issues</code> without fabricated
+features. Available outputs include sub-basins, merged footprint,
+outlined native-CRS outlet cell and one raster pair per refined
+target. Overlapping targets may duplicate pixels. Granular
+refinement is not silently merged into another layer.</p>
               </div>
             </td>
             <td>
@@ -2682,8 +2760,9 @@ Granular refinement is not silently merged into another layer.</p>
 
 <details class="note" open>
   <summary>Notes</summary>
-  <p>Original and vector-adjusted targets and provenance are retained in
-<code>result_metadata</code> when available, not added as extra map layers.</p>
+  <p>Original and vector-adjusted targets, provenance and source-network
+coverage diagnostics are retained in <code>result_metadata</code> when available,
+not added as extra map layers.</p>
 </details>
 
     </div>

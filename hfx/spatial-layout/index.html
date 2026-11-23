@@ -1092,8 +1092,13 @@ Rows and each neighbor list are sorted. Relationships are immediate, not closure
 catchment <code>local_river_ids</code>, are authoritative. A river may have zero, one or
 multiple represented local catchments; preserve every supplied association.
 Keep feature identity separate from association keys: preserve native fields such
-as TDX <code>streamID</code> independently, without merging distinct source features that
-share an association key.</p>
+as TDX <code>streamID</code> independently, without arbitrarily merging distinct source features
+that share an association key. In TDX-Hydro, where two processing basins
+(<code>1020018110</code> and <code>5020049720</code>) were exported with single-part <code>POLYGON</code> geometry
+splitting multi-part catchments into separate rows per <code>(processing_basin, streamID)</code>,
+collecting those single-part fragments into one OGC-valid <code>MultiPolygon</code> without
+dissolving or altering coordinates restores the 1-to-1 river-to-catchment mapping
+while preserving every original <code>fid</code> in <code>source_fids</code>.</p>
 <p>The river feature column <code>local_catchment_id</code> may be omitted. If present, it must
 equal the sole associated catchment ID, or be null when there is no represented
 association. It cannot represent multiple associations. If any river has multiple
@@ -1113,7 +1118,12 @@ numbers and support for plural lists alone do not establish reader compatibility
 <h3 id="relationship-provenance-and-access">Relationship provenance and access</h3>
 <p>Each <code>columns</code> entry records original source artifact/column, direction and domain
 meaning. <code>feature_artifacts</code> binds involved domains to final feature paths/hashes.
-Original graph files are provenance, not runtime feature addresses. Follow the
+Original graph files are provenance, not runtime feature addresses. Derived catchment
+<code>upstream_ids</code> and <code>downstream_ids</code> built from normalized <code>graph.parquet</code> keep river
+relationships (<code>rivers-relationships.arrow</code>) distinct from derived catchment
+relationships (<code>catchments-relationships.arrow</code>), while <code>catchment_connectivity</code>,
+catchment boundary columns, and <code>source-metadata.json</code> carry derivation rules and
+cut accounting. Follow the
 relationship's <code>target_domain</code>, then that domain's ID lookup to fetch records.
 Shared node incidence does not imply a supplied flow edge. Empty lists do not
 classify terminals or resolve unknown scalar relationships. Consult authoritative

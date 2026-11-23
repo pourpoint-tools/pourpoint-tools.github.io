@@ -951,6 +951,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pourpoint.UpstreamCoverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UpstreamCoverage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UpstreamCoverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.UpstreamCoverage.is_complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_complete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.UpstreamCoverage.cut_unit_ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cut_unit_ids
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.UpstreamCoverage.total_cuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        total_cuts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.SelectionResult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SelectionResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pourpoint.DelineationResult" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1637,6 +1698,67 @@
     <span class="md-ellipsis">
       
         BatchResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.UpstreamCoverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UpstreamCoverage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UpstreamCoverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.UpstreamCoverage.is_complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_complete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.UpstreamCoverage.cut_unit_ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cut_unit_ids
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourpoint.UpstreamCoverage.total_cuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        total_cuts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourpoint.SelectionResult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SelectionResult
       
     </span>
   </a>
@@ -2840,6 +2962,25 @@ source identity and attributes. Geometries use EPSG:4326.</p>
               </div>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.GranularRefinement.coverage">coverage</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.UpstreamCoverage
+
+
+  
+      dataclass
+   (pourpoint.results.UpstreamCoverage)" href="#pourpoint.UpstreamCoverage">UpstreamCoverage</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Retained source-network coverage assessment when refining a
+<code>SelectionResult</code> or selection batch, or an explicit <code>"not_assessed"</code>
+assessment for manually supplied sub-basins. Retaining this assessment
+does not recertify the raster output.</p>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -2957,6 +3098,23 @@ same combined mask and target.</p>
             <td>
               <div class="doc-md-description">
                 <p>Source manifest declarations; not proof of vector/raster equivalence.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.FootprintRefinement.coverage">coverage</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.UpstreamCoverage
+
+
+  
+      dataclass
+   (pourpoint.results.UpstreamCoverage)" href="#pourpoint.UpstreamCoverage">UpstreamCoverage</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Explicit source-network coverage assessment (<code>"not_assessed"</code> for
+manually supplied footprints).</p>
               </div>
             </td>
           </tr>
@@ -3226,7 +3384,8 @@ subsequent batch refinement and export; list calls get new names.</p>
             <td>
               <div class="doc-md-description">
                 <p>One slot per input. None means failure, not a valid empty selection.
-Successful selection slots are ordinary lists, which may be empty.</p>
+Successful slots carry typed results such as <code>SelectionResult</code>,
+<code>DelineationResult</code> or <code>GranularRefinement</code>.</p>
               </div>
             </td>
           </tr>
@@ -3261,6 +3420,366 @@ retain independent identities.</p>
               <div class="doc-md-description">
                 <p>Expected failures with input position, name, code and reason. Fatal
 configuration or integrity errors raise instead of returning this object.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="pourpoint.UpstreamCoverage" class="doc doc-heading">
+            <code>pourpoint.UpstreamCoverage</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Source-network connectivity completeness assessment for a selected closure.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.UpstreamCoverage.status">status</span></code></td>
+            <td>
+                  <code><span title="pourpoint.results.CoverageStatus">CoverageStatus</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source-network coverage classification across all visited units in the
+inclusive upstream closure:</p>
+<ul>
+<li><code>"complete"</code>: verified complete relative to the source network
+  (either <code>completeness == "complete"</code> was declared, or every visited
+  unit had a non-null zero in the declared cut column).</li>
+<li><code>"incomplete"</code>: one or more visited units have positive cut counts
+  and none are unverified (null).</li>
+<li><code>"unverified"</code>: one or more visited units have null cut counts and
+  none have positive cut counts.</li>
+<li><code>"incomplete_and_unverified"</code>: both positive cut counts and null
+  unverified units occur in the same closure.</li>
+<li><code>"not_assessed"</code>: source-network completeness could not be assessed
+  (for example missing completeness metadata, partial connectivity
+  without a declared cut column, an empty target geometry, or manually
+  supplied sub-basins or footprints).</li>
+</ul>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.UpstreamCoverage.declared_completeness">declared_completeness</span></code></td>
+            <td>
+                  <code><span title="pourpoint.results.DeclaredCompleteness">DeclaredCompleteness</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Manifest <code>completeness</code> declaration (<code>"complete"</code> or <code>"partial"</code>)
+at the queried level, or <code>None</code> when absent or not applicable.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.UpstreamCoverage.cuts_column">cuts_column</span></code></td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Declared source catchment integer column used to inspect per-unit
+upstream cuts, or <code>None</code> when no cut column applies.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.UpstreamCoverage.cut_counts">cut_counts</span></code></td>
+            <td>
+                  <code><span title="collections.abc.Mapping">Mapping</span>[<span title="int">int</span>, <span title="int">int</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Immutable mapping of catchment ID to positive immediate upstream cut
+count for affected visited units, sorted by ID. Empty when assessed with
+no cuts; <code>None</code> when <code>status == "not_assessed"</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.UpstreamCoverage.unverified_unit_ids">unverified_unit_ids</span></code></td>
+            <td>
+                  <code><span title="tuple">tuple</span>[<span title="int">int</span>, ...] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sorted unique catchment IDs whose declared cut count was null. Empty
+when assessed with no unverified units; <code>None</code> when
+<code>status == "not_assessed"</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.UpstreamCoverage.reason">reason</span></code></td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable explanation when <code>status == "not_assessed"</code>; <code>None</code>
+otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>This assessment describes source-network coverage of the selected vector
+closure relative to the HFX declarations, not vector/raster equivalence or
+real-world watershed area. It survives fabric closure and optional raster
+refinement without recertifying the raster output.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pourpoint.UpstreamCoverage.is_complete" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">is_complete</span><span class="p">:</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>True only when source-network coverage is verified <code>"complete"</code>.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pourpoint.UpstreamCoverage.cut_unit_ids" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">cut_unit_ids</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Sorted IDs of visited units with positive cut counts, or <code>None</code> when not assessed.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pourpoint.UpstreamCoverage.total_cuts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">total_cuts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Sum of immediate upstream cut counts across affected units, or <code>None</code> when not assessed.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="pourpoint.SelectionResult" class="doc doc-heading">
+            <code>pourpoint.SelectionResult</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Whole-unit upstream catchment selection with attached source-network coverage.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.SelectionResult.subbasins">subbasins</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="pourpoint.Subbasin
+
+
+  
+      dataclass
+   (pourpoint.features.Subbasin)" href="#pourpoint.Subbasin">Subbasin</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Selected whole source units in traversal order (empty for an empty
+target geometry). Materialized vectors survive fabric closure.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.SelectionResult.coverage">coverage</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.UpstreamCoverage
+
+
+  
+      dataclass
+   (pourpoint.results.UpstreamCoverage)" href="#pourpoint.UpstreamCoverage">UpstreamCoverage</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source-network completeness diagnostics across the inclusive upstream
+closure. Passing this object to <code>pourpoint.refinement.refine</code> preserves
+these diagnostics on the refined output.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.SelectionResult.level">level</span></code></td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Nonnegative catchment level queried for this selection.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.SelectionResult.target">target</span></code></td>
+            <td>
+                  <code><span title="shapely.geometry.base.BaseGeometry">BaseGeometry</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>EPSG:4326 target geometry used for selection.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.SelectionResult.provenance">provenance</span></code></td>
+            <td>
+                  <code><span title="collections.abc.Mapping">Mapping</span>[<span title="str">str</span>, <span title="object">object</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source manifest declarations, not a certification of raster equivalence
+or recomputed hydrological quantities.</p>
               </div>
             </td>
           </tr>
@@ -3426,6 +3945,23 @@ is represented separately by <code>outlet_cell</code>, not by changing this fiel
               <div class="doc-md-description">
                 <p>Source manifest declarations, not a certification of vector/raster
 equivalence or recomputed hydrological quantities.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="pourpoint.DelineationResult.coverage">coverage</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="pourpoint.UpstreamCoverage
+
+
+  
+      dataclass
+   (pourpoint.results.UpstreamCoverage)" href="#pourpoint.UpstreamCoverage">UpstreamCoverage</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source-network coverage assessment of the selected upstream closure,
+retained unchanged through optional refinement and merging.</p>
               </div>
             </td>
           </tr>

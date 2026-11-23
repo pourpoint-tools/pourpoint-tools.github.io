@@ -927,9 +927,8 @@ pieces fit together, from a point watershed to the upstream contributing area of
 <h2 id="install">Install</h2>
 <p>Requires Python 3.13 or later. With <a href="https://docs.astral.sh/uv/">uv</a>, add Pourpoint
 to your project.</p>
-<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>add<span class="w"> </span><span class="s2">"pourpoint==0.5.0rc5"</span>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>add<span class="w"> </span>pourpoint
 </code></pre></div>
-<p>This is a release candidate of the Python rewrite, available for testing before 0.5.0.</p>
 <h2 id="use-with-a-coding-agent">Use with a coding agent</h2>
 <p>Copy the prompt below into your coding agent after installing Pourpoint.</p>
 <details id="agent-prompt">
@@ -965,8 +964,12 @@ refine=True needs covering direction and accumulation rasters and never
 silently falls back to a coarse result. Consult the README's Rhine example
 for snapping, refinement and QGIS export; do not run it just for onboarding.
 
-Single-target OperationError exposes code and reason. For batches, inspect
-issues and None result slots; valid empty selections are not failures.
+Single-target OperationError exposes code and reason. Selection returns
+SelectionResult (with .subbasins and .coverage) and delineate returns
+DelineationResult (with .coverage). Incomplete, unverified or unassessed
+upstream coverage fails by default unless allow_incomplete=True is passed;
+retained UpstreamCoverage records affected unit IDs and cuts. For batches,
+inspect issues and None result slots; valid empty selections are not failures.
 Configuration and integrity errors raise. Do not treat partial batch success
 as complete coverage or source attributes as recomputed for clipped areas.
 
@@ -995,6 +998,11 @@ given, briefly confirm readiness.
 use the public <a href="https://doi.org/10.1029/2024WR038308">GRIT hydrofabric</a> to find its
 watershed and save a QGIS project. Pourpoint reads the required data from the hosted
 HFX bundle, so this example needs an internet connection.</p>
+<p>Some flow directions in GRIT v1.0 form loops. In affected watersheds, cells
+that drain into a loop never reach the outlet, so raster refinement can leave
+holes and underestimate the contributing area. For whole upstream sub-basins,
+use <code>delineate(..., refine=False)</code>. See the
+<a href="operations/#flow-direction-loops-in-grit-v10">GRIT v1.0 refinement note</a>.</p>
 <p>A point chosen on a map can fall slightly beside the hydrofabric's river line.
 We first select nearby rivers and snap the point to the nearest segment within
 100 metres. Coordinates use longitude followed by latitude.</p>
@@ -1014,10 +1022,10 @@ We first select nearby rivers and snap the point to the nearest segment within
     <span class="n">outlet</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">snap</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">point</span><span class="p">,</span> <span class="n">onto</span><span class="o">=</span><span class="n">nearby_rivers</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
     <span class="c1"># Follow the sub-basin connections upstream from the outlet.</span>
-    <span class="n">subbasins</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">select_upstream_subbasins</span><span class="p">(</span><span class="n">fabric</span><span class="o">=</span><span class="n">fabric</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">outlet</span><span class="p">)</span>
+    <span class="n">selection</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">select_upstream_subbasins</span><span class="p">(</span><span class="n">fabric</span><span class="o">=</span><span class="n">fabric</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">outlet</span><span class="p">)</span>
 
     <span class="c1"># Use native flow rasters to resolve the watershed within those sub-basins.</span>
-    <span class="n">refined</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="n">fabric</span><span class="o">=</span><span class="n">fabric</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">outlet</span><span class="p">,</span> <span class="n">subbasins</span><span class="o">=</span><span class="n">subbasins</span><span class="p">)</span>
+    <span class="n">refined</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="n">fabric</span><span class="o">=</span><span class="n">fabric</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">outlet</span><span class="p">,</span> <span class="n">subbasins</span><span class="o">=</span><span class="n">selection</span><span class="p">)</span>
     <span class="n">watershed</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">subbasins</span><span class="o">=</span><span class="n">refined</span><span class="o">.</span><span class="n">subbasins</span><span class="p">)</span>
 
     <span class="c1"># Select the supplied rivers inside the refined watershed.</span>

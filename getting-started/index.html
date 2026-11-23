@@ -974,13 +974,11 @@
 
 <h1 id="getting-started">Getting started</h1>
 <h2 id="install">Install</h2>
-<p>Use Python 3.13 or newer and <a href="https://docs.astral.sh/uv/">uv</a>. From an authorized
-checkout of the private Pourpoint repository, run:</p>
-<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync
+<p>Pourpoint requires Python 3.13 or newer. In your Python project, install the
+package from PyPI with <a href="https://docs.astral.sh/uv/">uv</a>.</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>add<span class="w"> </span>pourpoint
 </code></pre></div>
-<p>Run Python through <code>uv run python</code> in that checkout. No PyPI release is required.
-For another Python project, install the checkout as a local dependency with
-<code>uv add /path/to/pourpoint</code>.</p>
+<p>Run <code>uv run python</code> in that project to use Pourpoint.</p>
 <h2 id="choose-an-hfx-bundle">Choose an HFX bundle</h2>
 <p>Supply <code>HydroFabric</code> with a local bundle directory or an accessible HTTP(S) or S3
 bundle location. Its root manifest must select all three current representation

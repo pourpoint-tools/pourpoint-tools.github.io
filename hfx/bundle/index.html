@@ -1049,7 +1049,7 @@ manifest fields and validate fields they use.</p>
 </tr>
 <tr>
 <td><code>catchment_connectivity</code></td>
-<td>One <code>{ "level": integer, "status": "supplied" or "not_supplied" }</code> per catchment level</td>
+<td>One <code>{ "level": integer, "status": "supplied" or "not_supplied" }</code> per catchment level, with optional completeness and derivation fields</td>
 </tr>
 <tr>
 <td><code>categorical_columns</code></td>
@@ -1085,6 +1085,14 @@ manifest fields and validate fields they use.</p>
 </tr>
 </tbody>
 </table>
+<p>When a <code>catchment_connectivity</code> entry has <code>status: "supplied"</code>, it may also carry
+optional fields: <code>derivation</code> (string describing source derivation when catchment edges
+are derived during normalization rather than natively stored on catchment records, such
+as <code>"river_local_associations"</code>), <code>completeness</code> (<code>"complete"</code> or <code>"partial"</code> when source
+omissions, subset cuts, or unassociated polygons leave some watersheds incomplete or
+unverified), and <code>upstream_cuts_column</code> (top-level catchment integer column name, such as
+<code>"upstream_boundary_cuts"</code>, carrying immediate upstream cut counts per unit). Existing
+publications without these optional keys remain valid unchanged.</p>
 <p><code>families</code> maps represented <code>catchments</code>, <code>rivers</code>, and <code>river_nodes</code> to separate
 ID domains. Each declaration supplies <code>data</code>, <code>data_sha256</code>, <code>count</code>, <code>lookup</code>,
 and <code>directory</code>. Counts are exact positive feature and lookup row counts. Omit
@@ -1101,7 +1109,12 @@ exact verified normalized input bytes; it is provenance, not current feature
 addressing. <code>NOTICE</code>, <code>CITATION.txt</code> and dataset publication notes carry applicable
 licenses, transformations and caveats. GRIT data remains CC BY-NC 4.0, separate
 from this repository's MIT code license. A new physical layout does not certify
-source hydrology. Source and derived quantities retain their distinct meanings.</p>
+source hydrology. Source and derived quantities retain their distinct meanings.
+When a dataset applies an approved source geometry normalization rule (such as
+MERIT ring normalization), per-feature original geometries, raw failure reasons,
+algorithm versions, and measured acceptance checks (<code>repaired-features.jsonl.gz</code>)
+along with exhaustive per-partition summaries in <code>source-metadata.json</code> remain
+part of bundle provenance alongside <code>omitted-features.json</code>.</p>
 <h2 id="artifact-identity-and-range-access">Artifact identity and range access</h2>
 <p>Each fingerprint has nonnegative integer <code>size_bytes</code> and lowercase hexadecimal SHA-256
 strings <code>sha256</code>, <code>head_sha256</code>, <code>tail_sha256</code>. The first is the whole-file digest.
